@@ -37,7 +37,7 @@ export default function Avatar3D({ className = "w-full h-full", isSpeaking = fal
     keyLight.position.set(4, 6, 5);
     scene.add(keyLight);
 
-    const goldRimLight = new THREE.DirectionalLight(0xb4a06e, 3.5);
+    const goldRimLight = new THREE.DirectionalLight(0x38bdf8, 3.5);
     goldRimLight.position.set(-4, 3, -3);
     scene.add(goldRimLight);
 
@@ -67,10 +67,10 @@ export default function Avatar3D({ className = "w-full h-full", isSpeaking = fal
     // Gold Tech Collar Trim
     const collarGeo = new THREE.TorusGeometry(0.55, 0.05, 16, 32);
     const goldMat = new THREE.MeshStandardMaterial({
-      color: 0xb4a06e,
+      color: 0x38bdf8,
       roughness: 0.25,
       metalness: 0.9,
-      emissive: 0xb4a06e,
+      emissive: 0x38bdf8,
       emissiveIntensity: 0.25
     });
     const collar = new THREE.Mesh(collarGeo, goldMat);
@@ -110,10 +110,10 @@ export default function Avatar3D({ className = "w-full h-full", isSpeaking = fal
       metalness: 0.3
     });
     const hairTipMat = new THREE.MeshStandardMaterial({
-      color: 0xb4a06e,
+      color: 0x38bdf8,
       roughness: 0.3,
       metalness: 0.7,
-      emissive: 0xb4a06e,
+      emissive: 0x38bdf8,
       emissiveIntensity: 0.35
     });
 

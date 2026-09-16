@@ -19,47 +19,47 @@ export default function ResumeModal({ isOpen, onClose }) {
 
   return (
     <div
-      className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
+      className="fixed inset-0 z-[160] flex items-center justify-center p-3 sm:p-6 bg-black/85 backdrop-blur-md animate-in fade-in duration-200"
       onClick={(e) => {
         if (e.target === e.currentTarget) onClose();
       }}
     >
-      <div className="relative w-full max-w-4xl max-h-[92vh] bg-[#0c0d12] border border-white/15 rounded-2xl flex flex-col shadow-2xl overflow-hidden">
+      <div className="relative w-full max-w-4xl max-h-[92vh] bg-surface border border-stroke rounded-3xl flex flex-col shadow-2xl overflow-hidden">
         
         {/* Modal Top Bar (Hidden in Print) */}
-        <div className="print:hidden px-6 py-4 bg-[#11131a] border-b border-white/10 flex flex-wrap items-center justify-between gap-4 z-10">
+        <div className="print:hidden px-6 py-4 bg-bg/90 border-b border-stroke flex flex-wrap items-center justify-between gap-4 z-10 backdrop-blur-md">
           <div className="flex items-center gap-3">
-            <div className="p-2 rounded-lg bg-[#B4A06E]/15 border border-[#B4A06E]/30 text-[#B4A06E]">
+            <div className="p-2 rounded-full border border-stroke bg-surface text-text-primary">
               <FileText className="w-4 h-4" />
             </div>
             <div>
-              <h3 className="text-sm font-heading font-medium text-white">Targeted Resume Generator</h3>
-              <p className="text-[11px] font-mono text-neutral-400">Tailor Ikram's resume to your hiring focus</p>
+              <h3 className="text-sm font-display italic text-text-primary text-base">Targeted Resume Generator</h3>
+              <p className="text-[11px] uppercase tracking-wider text-muted">Tailor Ikram&apos;s resume to your hiring focus</p>
             </div>
           </div>
 
           {/* Role Filter Chips */}
-          <div className="flex items-center gap-1.5 bg-[#080808] p-1 rounded-xl border border-white/10 text-xs font-mono">
+          <div className="flex items-center gap-1.5 bg-surface p-1 rounded-full border border-stroke text-xs">
             <button
               onClick={() => setRoleFocus('fullstack')}
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
-                roleFocus === 'fullstack' ? 'bg-[#B4A06E] text-black font-semibold' : 'text-neutral-400 hover:text-white'
+              className={`px-3 py-1.5 rounded-full transition-all text-xs ${
+                roleFocus === 'fullstack' ? 'accent-gradient text-black font-semibold' : 'text-muted hover:text-text-primary'
               }`}
             >
               Full-Stack
             </button>
             <button
               onClick={() => setRoleFocus('backend')}
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
-                roleFocus === 'backend' ? 'bg-[#B4A06E] text-black font-semibold' : 'text-neutral-400 hover:text-white'
+              className={`px-3 py-1.5 rounded-full transition-all text-xs ${
+                roleFocus === 'backend' ? 'accent-gradient text-black font-semibold' : 'text-muted hover:text-text-primary'
               }`}
             >
               Backend Focus
             </button>
             <button
               onClick={() => setRoleFocus('cloud_ai')}
-              className={`px-3 py-1.5 rounded-lg transition-colors ${
-                roleFocus === 'cloud_ai' ? 'bg-[#B4A06E] text-black font-semibold' : 'text-neutral-400 hover:text-white'
+              className={`px-3 py-1.5 rounded-full transition-all text-xs ${
+                roleFocus === 'cloud_ai' ? 'accent-gradient text-black font-semibold' : 'text-muted hover:text-text-primary'
               }`}
             >
               Cloud &amp; AI
@@ -70,15 +70,14 @@ export default function ResumeModal({ isOpen, onClose }) {
           <div className="flex items-center gap-2">
             <button
               onClick={handlePrint}
-              className="px-4 py-2 bg-[#B4A06E] hover:bg-white text-black font-mono text-xs uppercase tracking-widest font-bold rounded-lg flex items-center gap-1.5 transition-colors shadow-md"
-              title="Print or save as PDF"
+              className="flex items-center gap-1.5 px-4 py-2 rounded-full accent-gradient text-black text-xs uppercase tracking-wider font-semibold hover:opacity-90 transition-opacity"
             >
               <Printer className="w-3.5 h-3.5" />
               <span>Print / PDF</span>
             </button>
             <button
               onClick={onClose}
-              className="p-2 text-neutral-400 hover:text-white hover:bg-white/10 rounded-lg border border-white/10 transition-colors"
+              className="p-2 text-muted hover:text-text-primary hover:bg-bg rounded-full border border-stroke transition-colors"
             >
               <X className="w-4 h-4" />
             </button>
@@ -101,7 +100,7 @@ export default function ResumeModal({ isOpen, onClose }) {
             <div className="text-xs font-mono text-slate-600 text-left sm:text-right space-y-0.5">
               <div>Islamabad, Pakistan</div>
               <div>ikramamjad10@gmail.com</div>
-              <div>github.com/ikram-amjad</div>
+              <div>github.com/ikramamjad</div>
               <div>linkedin.com/in/ikram-amjad-8963b4195</div>
             </div>
           </div>

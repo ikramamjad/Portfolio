@@ -117,7 +117,7 @@ const KNOWLEDGE_RESPONSES = {
   },
 
   skills: {
-    'en-US': "Ikram's core technical toolkit spans:\n• **Frontend**: React.js, Angular.js, TypeScript, JavaScript (ES6+), Tailwind CSS, Three.js / WebGL\n• **Backend**: Node.js, Express.js, PHP & Laravel, RESTful API design, Microservices\n• **Databases & Cache**: MongoDB, PostgreSQL, MySQL, Redis (caching & queues)\n• **Cloud & AI**: AWS (S3, Lambda serverless), Prompt Engineering, AWS & Oracle AI Foundations\n• **Tools**: Git, Postman, Linux, Vite",
+    'en-US': "Ikram's core technical toolkit spans:\n• **Stacks**: MongoDB, MERN Stack, Express.js, MySQL, PostgreSQL, Next.js, React.js, Angular.js, Node.js, PHP, Laravel, and Prompt Engineering\n• **Cloud & Cache**: AWS (S3, Lambda serverless), Redis (caching & queues)\n• **Certifications**: AWS & Oracle AI/Cloud Foundations\n• **Leadership**: IEEE COMSATS Project Manager",
     'ur-PK': "اکرام کے تکنیکی اوزار میں شامل ہیں:\n• **فرنٹ اینڈ**: ری ایکٹ، اینگولر، ٹیل ونڈ سی ایس ایس، تھری جے ایس (3D WebGL)\n• **بیک اینڈ**: نوڈ جے ایس، ایکسپریس، پی ایچ پی و لاراول، ریسٹ فل سروسز\n• **ڈیٹا بیسز**: مونگو ڈی بی، پوسٹگری ایس کیو ایل، مائی ایس کیو ایل، ریڈیس کیشے\n• **کلاؤڈ اور اے آئی**: اے ڈبلیو ایس (S3، لیمبڈا)، پرامپٹ انجینئرنگ، اوریکل اور ایمیزون سرٹیفیکیشنز",
     'es-ES': "Las habilidades de Ikram incluyen React.js, Angular.js, Node.js, Express, PostgreSQL, MongoDB, Redis, AWS (S3 y Lambda) y Prompt Engineering.",
     'de-DE': "Ikrams Fähigkeiten umfassen React.js, Angular.js, Node.js, Express, PostgreSQL, MongoDB, Redis, AWS (S3, Lambda) und Prompt Engineering.",
@@ -150,9 +150,9 @@ const KNOWLEDGE_RESPONSES = {
   },
 
   contact: {
-    'en-US': "You can easily reach out to Ikram directly:\n• **Email**: [ikramamjad10@gmail.com](mailto:ikramamjad10@gmail.com)\n• **LinkedIn**: [linkedin.com/in/ikram-amjad-8963b4195](https://www.linkedin.com/in/ikram-amjad-8963b4195)\n• **GitHub**: [github.com/ikram-amjad](https://github.com/ikram-amjad)\n• **Location**: Islamabad, Pakistan\nHe responds promptly within 24 hours!",
-    'ur-PK': "آپ اکرام سے باآسانی رابطہ کر سکتے ہیں:\n• **ای میل**: ikramamjad10@gmail.com\n• **لنکڈ اِن**: linkedin.com/in/ikram-amjad-8963b4195\n• **گٹ ہب**: github.com/ikram-amjad\n• **مقام**: اسلام آباد، پاکستان\nوہ عموماً 24 گھنٹوں کے اندر جواب دیتے ہیں!",
-    'es-ES': "Puedes contactar a Ikram por correo en ikramamjad10@gmail.com, en LinkedIn (linkedin.com/in/ikram-amjad-8963b4195) o en GitHub (github.com/ikram-amjad).",
+    'en-US': "You can easily reach out to Ikram directly:\n• **Email**: [ikramamjad10@gmail.com](mailto:ikramamjad10@gmail.com)\n• **LinkedIn**: [linkedin.com/in/ikram-amjad-8963b4195](https://www.linkedin.com/in/ikram-amjad-8963b4195)\n• **GitHub**: [github.com/ikramamjad](https://github.com/ikramamjad)\n• **Location**: Islamabad, Pakistan\nHe responds promptly within 24 hours!",
+    'ur-PK': "آپ اکرام سے باآسانی رابطہ کر سکتے ہیں:\n• **ای میل**: ikramamjad10@gmail.com\n• **لنکڈ اِن**: linkedin.com/in/ikram-amjad-8963b4195\n• **گٹ ہب**: github.com/ikramamjad\n• **مقام**: اسلام آباد، پاکستان\nوہ عموماً 24 گھنٹوں کے اندر جواب دیتے ہیں!",
+    'es-ES': "Puedes contactar a Ikram por correo en ikramamjad10@gmail.com, en LinkedIn (linkedin.com/in/ikram-amjad-8963b4195) o en GitHub (github.com/ikramamjad).",
     'de-DE': "Du kannst Ikram per E-Mail unter ikramamjad10@gmail.com, auf LinkedIn oder auf GitHub erreichen. Standort: Islamabad, Pakistan.",
     'fr-FR': "Vous pouvez contacter Ikram par e-mail à ikramamjad10@gmail.com, via LinkedIn ou GitHub. Il est basé à Islamabad, Pakistan.",
     'ar-SA': "يمكنك التواصل مع إكرام عبر البريد: ikramamjad10@gmail.com، أو من خلال LinkedIn وGitHub. مقره إسلام آباد، باكستان.",
@@ -317,12 +317,17 @@ class AITwinService {
     return intentGroup[lang] || intentGroup['en-US'] || KNOWLEDGE_RESPONSES.fallback['en-US'];
   }
 
+  // Alias for getResponse
+  async getResponse(query, lang = 'en-US', optionalApiKey = null) {
+    return this.generateResponse(query, lang, optionalApiKey);
+  }
+
   // Optional live Gemini fallback if API key configured
   async queryGeminiLive(query, lang, apiKey) {
     const systemPrompt = `You are the AI Twin of Ikram Amjad, a Computer Engineer and Full-Stack Developer based in Islamabad, Pakistan. 
 Ikram works as a Full-Stack Engineer at Cuboid Incorporation and Back End Developer at WebMantis. He graduated from COMSATS Abbottabad. 
 Core stack: React, Angular, Node.js, Express, MongoDB, PostgreSQL, Redis, AWS (S3, Lambda), Prompt Engineering. 
-Email: ikramamjad10@gmail.com, LinkedIn: https://www.linkedin.com/in/ikram-amjad-8963b4195, GitHub: https://github.com/ikram-amjad.
+Email: ikramamjad10@gmail.com, LinkedIn: https://www.linkedin.com/in/ikram-amjad-8963b4195, GitHub: https://github.com/ikramamjad.
 Answer warmly, accurately, and concisely in language: ${lang}.`;
 
     const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {

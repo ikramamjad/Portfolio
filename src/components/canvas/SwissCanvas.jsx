@@ -24,7 +24,7 @@ export default function SwissCanvas() {
     // Geometric 3D Icosahedron wireframe
     const geometry = new THREE.IcosahedronGeometry(7, 1);
     const wireframeMaterial = new THREE.MeshBasicMaterial({
-      color: 0xB4A06E,
+      color: 0x38BDF8,
       wireframe: true,
       transparent: true,
       opacity: 0.22

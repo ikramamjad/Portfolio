@@ -496,14 +496,14 @@ export const handler = async (event) => {
   }, [activeScenario]);
 
   return (
-    <section id="architecture" className="relative z-10 px-6 sm:px-10 md:px-14 py-28 border-t border-white/10 bg-[#07080b]">
+    <section id="architecture" className="relative z-10 px-6 sm:px-10 md:px-14 py-28 border-t border-white/10 bg-slate-950/40">
       <div className="max-w-7xl mx-auto">
         
         {/* Section Header */}
         <div className="flex flex-col lg:flex-row justify-between lg:items-end mb-10 pb-6 border-b border-white/[0.08]">
           <div>
             <div className="flex items-center gap-2.5 mb-2">
-              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-[#B4A06E]/20 text-[#B4A06E] border border-[#B4A06E]/40">
+              <span className="px-2.5 py-0.5 rounded-full text-[10px] font-mono uppercase tracking-widest bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40">
                 02 // SYSTEM DESIGN LAB
               </span>
               <span className="text-xs font-mono text-neutral-400">
@@ -517,12 +517,12 @@ export const handler = async (event) => {
           
           <div className="mt-4 lg:mt-0 flex flex-wrap items-center gap-3">
             {/* Mode Switcher Tabs */}
-            <div className="flex items-center bg-[#0d0f16] p-1 rounded-xl border border-white/10 text-xs font-mono">
+            <div className="flex items-center bg-slate-900/60 p-1 rounded-xl border border-white/10 text-xs font-mono">
               <button
                 onClick={() => setActiveTab('topology')}
                 className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
                   activeTab === 'topology'
-                    ? 'bg-[#B4A06E] text-black font-semibold shadow-md'
+                    ? 'bg-[#38BDF8] text-black font-semibold shadow-md'
                     : 'text-neutral-400 hover:text-white'
                 }`}
               >
@@ -533,7 +533,7 @@ export const handler = async (event) => {
                 onClick={() => setActiveTab('game')}
                 className={`px-3.5 py-1.5 rounded-lg transition-all flex items-center gap-1.5 ${
                   activeTab === 'game'
-                    ? 'bg-[#B4A06E] text-black font-semibold shadow-md'
+                    ? 'bg-[#38BDF8] text-black font-semibold shadow-md'
                     : 'text-neutral-400 hover:text-white'
                 }`}
               >
@@ -547,7 +547,7 @@ export const handler = async (event) => {
               onClick={() => setAudioEnabled(!audioEnabled)}
               className={`px-3 py-2 rounded-xl text-xs font-mono border transition-all flex items-center gap-1.5 ${
                 audioEnabled 
-                  ? 'bg-[#B4A06E]/20 border-[#B4A06E] text-[#B4A06E]' 
+                  ? 'bg-[#38BDF8]/20 border-[#38BDF8] text-[#38BDF8]' 
                   : 'bg-white/[0.03] border-white/10 text-neutral-400 hover:text-white'
               }`}
               title={audioEnabled ? "Sound enabled" : "Sound muted"}
@@ -575,24 +575,24 @@ export const handler = async (event) => {
                     disabled={isRunning}
                     className={`p-5 text-left border rounded-2xl transition-all relative overflow-hidden group ${
                       isSelected
-                        ? 'bg-[#121522] border-[#B4A06E] shadow-xl shadow-[#B4A06E]/10'
+                        ? 'bg-[#121522] border-[#38BDF8] shadow-xl shadow-[#38BDF8]/10'
                         : 'bg-[#0a0c12] border-white/10 hover:border-white/30 text-neutral-400'
                     } disabled:opacity-50`}
                   >
                     {isSelected && (
-                      <div className="absolute top-0 left-0 right-0 h-1 bg-[#B4A06E]" />
+                      <div className="absolute top-0 left-0 right-0 h-1 bg-[#38BDF8]" />
                     )}
 
                     <div className="flex items-center justify-between mb-2">
                       <span className={`text-[10px] font-mono uppercase px-2 py-0.5 rounded ${
-                        isSelected ? 'bg-[#B4A06E]/20 text-[#B4A06E]' : 'bg-white/5 text-neutral-400'
+                        isSelected ? 'bg-[#38BDF8]/20 text-[#38BDF8]' : 'bg-white/5 text-neutral-400'
                       }`}>
                         {sc.badge}
                       </span>
                       <span className="text-xs font-mono text-neutral-500">~{sc.expectedLatency}</span>
                     </div>
 
-                    <h3 className="text-sm font-mono font-medium text-white mb-1 group-hover:text-[#B4A06E] transition-colors">
+                    <h3 className="text-sm font-mono font-medium text-white mb-1 group-hover:text-[#38BDF8] transition-colors">
                       {sc.title}
                     </h3>
                     <p className="text-xs text-neutral-300 font-light leading-relaxed line-clamp-2">
@@ -612,7 +612,7 @@ export const handler = async (event) => {
                   <button
                     onClick={runSimulation}
                     disabled={isRunning}
-                    className="px-6 py-3 bg-[#B4A06E] hover:bg-white text-black font-mono text-xs uppercase tracking-widest font-bold transition-all flex items-center gap-2 shadow-lg shadow-[#B4A06E]/20 active:scale-95 disabled:opacity-50 rounded-xl"
+                    className="px-6 py-3 bg-[#38BDF8] hover:bg-white text-black font-mono text-xs uppercase tracking-widest font-bold transition-all flex items-center gap-2 shadow-lg shadow-[#38BDF8]/20 active:scale-95 disabled:opacity-50 rounded-xl"
                   >
                     {isRunning ? (
                       <>
@@ -658,7 +658,7 @@ export const handler = async (event) => {
                 <div className="flex items-center gap-6 font-mono text-xs">
                   <div>
                     <span className="text-neutral-500 block text-[10px]">ROUNDTRIP</span>
-                    <span className="text-[#B4A06E] font-bold text-sm">{metrics.latency}</span>
+                    <span className="text-[#38BDF8] font-bold text-sm">{metrics.latency}</span>
                   </div>
                   <div className="hidden sm:block">
                     <span className="text-neutral-500 block text-[10px]">P99 LATENCY</span>
@@ -692,22 +692,22 @@ export const handler = async (event) => {
                         }}
                         className={`p-4 rounded-2xl border cursor-pointer transition-all duration-300 flex flex-col items-center justify-between text-center relative select-none min-h-[195px] ${
                           isActive
-                            ? 'bg-[#B4A06E]/20 border-[#B4A06E] scale-105 shadow-2xl shadow-[#B4A06E]/20'
+                            ? 'bg-[#38BDF8]/20 border-[#38BDF8] scale-105 shadow-2xl shadow-[#38BDF8]/20'
                             : isInspecting
                             ? 'bg-[#151928] border-white/60 shadow-xl'
-                            : 'bg-[#0d0f16] border-white/10 hover:border-[#B4A06E]/50 hover:bg-[#11131c]'
+                            : 'bg-slate-900/60 border-white/10 hover:border-[#38BDF8]/50 hover:bg-[#11131c]'
                         }`}
                       >
                         {isActive && (
                           <span className="absolute top-2.5 right-2.5 flex h-2.5 w-2.5">
-                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#B4A06E] opacity-75" />
-                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#B4A06E]" />
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#38BDF8] opacity-75" />
+                            <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-[#38BDF8]" />
                           </span>
                         )}
 
                         <div className={`p-3.5 rounded-2xl mb-3 transition-colors ${
                           isActive 
-                            ? 'bg-[#B4A06E] text-black shadow-lg shadow-[#B4A06E]/40' 
+                            ? 'bg-[#38BDF8] text-black shadow-lg shadow-[#38BDF8]/40' 
                             : 'bg-white/[0.04] text-neutral-300'
                         }`}>
                           <Icon className="w-6 h-6" />
@@ -738,7 +738,7 @@ export const handler = async (event) => {
               <div className="bg-[#06070a] border border-white/10 rounded-2xl p-5 space-y-4 font-mono text-xs">
                 <div className="flex items-center justify-between pb-3 border-b border-white/5 text-neutral-400 text-[11px]">
                   <span className="flex items-center gap-2">
-                    <BarChart3 className="w-3.5 h-3.5 text-[#B4A06E]" />
+                    <BarChart3 className="w-3.5 h-3.5 text-[#38BDF8]" />
                     <span>DISTRIBUTED REQUEST TRACE // WATERFALL SPANS</span>
                   </span>
                   <span className="text-neutral-500 text-[10px]">OpenTelemetry Trace ID: 4bf92f3577b34da6</span>
@@ -756,7 +756,7 @@ export const handler = async (event) => {
                           <span className="text-[10px] px-1.5 py-0.5 rounded bg-white/5 text-neutral-400 font-mono">
                             {span.service}
                           </span>
-                          <span className="text-[#B4A06E] font-semibold">{span.duration}</span>
+                          <span className="text-[#38BDF8] font-semibold">{span.duration}</span>
                         </div>
                       </div>
 
@@ -778,7 +778,7 @@ export const handler = async (event) => {
 
               {/* Node Inspector Modal / Flyout HUD (When user clicks any node!) */}
               {selectedNode && (
-                <div className="p-6 bg-[#0f121b] border border-[#B4A06E]/40 rounded-2xl animate-in fade-in slide-in-from-bottom-2 duration-200 relative">
+                <div className="p-6 bg-[#0f121b] border border-[#38BDF8]/40 rounded-2xl animate-in fade-in slide-in-from-bottom-2 duration-200 relative">
                   <button
                     onClick={() => setSelectedNode(null)}
                     className="absolute top-4 right-4 p-1.5 text-neutral-400 hover:text-white hover:bg-white/10 rounded-lg transition-colors"
@@ -788,7 +788,7 @@ export const handler = async (event) => {
                   </button>
 
                   <div className="flex items-start gap-4 mb-4">
-                    <div className="p-3 rounded-xl bg-[#B4A06E]/20 text-[#B4A06E] border border-[#B4A06E]/40 shrink-0">
+                    <div className="p-3 rounded-xl bg-[#38BDF8]/20 text-[#38BDF8] border border-[#38BDF8]/40 shrink-0">
                       <selectedNode.icon className="w-6 h-6" />
                     </div>
                     <div>
@@ -816,7 +816,7 @@ export const handler = async (event) => {
 
                   {/* Production Code Snippet */}
                   <div className="pt-2">
-                    <span className="text-[11px] font-mono text-[#B4A06E] uppercase tracking-wider block mb-2">
+                    <span className="text-[11px] font-mono text-[#38BDF8] uppercase tracking-wider block mb-2">
                       Production Engineering Snippet:
                     </span>
                     <pre className="p-3.5 bg-[#06070a] border border-white/10 rounded-xl text-neutral-300 text-[11px] font-mono overflow-x-auto leading-relaxed">
@@ -830,7 +830,7 @@ export const handler = async (event) => {
               <div className="bg-[#06070a] border border-white/[0.08] rounded-2xl p-4 sm:p-5 font-mono text-xs space-y-2">
                 <div className="flex items-center justify-between pb-3 border-b border-white/5 text-neutral-500 text-[11px]">
                   <span className="flex items-center gap-2">
-                    <Terminal className="w-3.5 h-3.5 text-[#B4A06E]" />
+                    <Terminal className="w-3.5 h-3.5 text-[#38BDF8]" />
                     <span>SYSTEM EXECUTION STREAM</span>
                   </span>
                   <span className="text-neutral-400 text-[10px]">TLS 1.3 • MUTUAL AUTH</span>
@@ -841,7 +841,7 @@ export const handler = async (event) => {
                     <div key={idx} className="flex items-start gap-2.5 leading-relaxed">
                       <span className="text-neutral-600 shrink-0 text-[11px]">[{log.time}]</span>
                       <span className={`shrink-0 font-bold ${
-                        log.type === 'success' ? 'text-emerald-400' : log.type === 'warning' ? 'text-amber-400' : 'text-[#B4A06E]'
+                        log.type === 'success' ? 'text-emerald-400' : log.type === 'warning' ? 'text-amber-400' : 'text-[#38BDF8]'
                       }`}>
                         {log.type === 'success' ? '✓' : log.type === 'warning' ? '⚡' : '▹'}
                       </span>
@@ -866,7 +866,7 @@ export const handler = async (event) => {
             {/* Game Intro Banner */}
             <div className="flex flex-col md:flex-row justify-between md:items-center gap-4 pb-6 border-b border-white/10">
               <div>
-                <span className="text-xs font-mono uppercase tracking-widest text-[#B4A06E] flex items-center gap-2">
+                <span className="text-xs font-mono uppercase tracking-widest text-[#38BDF8] flex items-center gap-2">
                   <Gamepad2 className="w-4 h-4" />
                   ARCHITECT SURVIVAL CHALLENGE // CAN YOUR STACK SURVIVE?
                 </span>
@@ -889,12 +889,12 @@ export const handler = async (event) => {
                   onClick={() => setSelectedCrisis('flash_sale')}
                   className={`p-4 rounded-xl border text-left transition-all ${
                     selectedCrisis === 'flash_sale'
-                      ? 'bg-[#151928] border-[#B4A06E] text-white'
+                      ? 'bg-[#151928] border-[#38BDF8] text-white'
                       : 'bg-[#0c0e14] border-white/10 text-neutral-400 hover:border-white/30'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-mono font-bold text-[#B4A06E]">CRISIS #01</span>
+                    <span className="text-xs font-mono font-bold text-[#38BDF8]">CRISIS #01</span>
                     <Flame className="w-3.5 h-3.5 text-amber-500" />
                   </div>
                   <h4 className="text-sm font-medium text-white mb-1">50K Flash Sale Spike</h4>
@@ -907,12 +907,12 @@ export const handler = async (event) => {
                   onClick={() => setSelectedCrisis('db_exhaust')}
                   className={`p-4 rounded-xl border text-left transition-all ${
                     selectedCrisis === 'db_exhaust'
-                      ? 'bg-[#151928] border-[#B4A06E] text-white'
+                      ? 'bg-[#151928] border-[#38BDF8] text-white'
                       : 'bg-[#0c0e14] border-white/10 text-neutral-400 hover:border-white/30'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-mono font-bold text-[#B4A06E]">CRISIS #02</span>
+                    <span className="text-xs font-mono font-bold text-[#38BDF8]">CRISIS #02</span>
                     <Database className="w-3.5 h-3.5 text-indigo-400" />
                   </div>
                   <h4 className="text-sm font-medium text-white mb-1">Database Pool Storm</h4>
@@ -925,12 +925,12 @@ export const handler = async (event) => {
                   onClick={() => setSelectedCrisis('ai_burst')}
                   className={`p-4 rounded-xl border text-left transition-all ${
                     selectedCrisis === 'ai_burst'
-                      ? 'bg-[#151928] border-[#B4A06E] text-white'
+                      ? 'bg-[#151928] border-[#38BDF8] text-white'
                       : 'bg-[#0c0e14] border-white/10 text-neutral-400 hover:border-white/30'
                   }`}
                 >
                   <div className="flex items-center justify-between mb-1">
-                    <span className="text-xs font-mono font-bold text-[#B4A06E]">CRISIS #03</span>
+                    <span className="text-xs font-mono font-bold text-[#38BDF8]">CRISIS #03</span>
                     <Sparkles className="w-3.5 h-3.5 text-pink-400" />
                   </div>
                   <h4 className="text-sm font-medium text-white mb-1">GenAI Token Ingestion Burst</h4>
@@ -956,7 +956,7 @@ export const handler = async (event) => {
                     <button
                       onClick={() => setGameConfig({ ...gameConfig, redisCache: true })}
                       className={`flex-1 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
-                        gameConfig.redisCache ? 'bg-[#B4A06E] text-black' : 'bg-white/5 text-neutral-400'
+                        gameConfig.redisCache ? 'bg-[#38BDF8] text-black' : 'bg-white/5 text-neutral-400'
                       }`}
                     >
                       REDIS ON
@@ -979,7 +979,7 @@ export const handler = async (event) => {
                     <button
                       onClick={() => setGameConfig({ ...gameConfig, rateLimiter: 'strict' })}
                       className={`flex-1 py-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
-                        gameConfig.rateLimiter === 'strict' ? 'bg-[#B4A06E] text-black' : 'bg-white/5 text-neutral-400'
+                        gameConfig.rateLimiter === 'strict' ? 'bg-[#38BDF8] text-black' : 'bg-white/5 text-neutral-400'
                       }`}
                     >
                       STRICT
@@ -1002,7 +1002,7 @@ export const handler = async (event) => {
                     <button
                       onClick={() => setGameConfig({ ...gameConfig, dbPool: 15 })}
                       className={`flex-1 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
-                        gameConfig.dbPool === 15 ? 'bg-[#B4A06E] text-black' : 'bg-white/5 text-neutral-400'
+                        gameConfig.dbPool === 15 ? 'bg-[#38BDF8] text-black' : 'bg-white/5 text-neutral-400'
                       }`}
                     >
                       15
@@ -1010,7 +1010,7 @@ export const handler = async (event) => {
                     <button
                       onClick={() => setGameConfig({ ...gameConfig, dbPool: 50 })}
                       className={`flex-1 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
-                        gameConfig.dbPool === 50 ? 'bg-[#B4A06E] text-black' : 'bg-white/5 text-neutral-400'
+                        gameConfig.dbPool === 50 ? 'bg-[#38BDF8] text-black' : 'bg-white/5 text-neutral-400'
                       }`}
                     >
                       50
@@ -1018,7 +1018,7 @@ export const handler = async (event) => {
                     <button
                       onClick={() => setGameConfig({ ...gameConfig, dbPool: 100 })}
                       className={`flex-1 py-2 rounded-lg text-xs font-mono font-semibold transition-all ${
-                        gameConfig.dbPool === 100 ? 'bg-[#B4A06E] text-black' : 'bg-white/5 text-neutral-400'
+                        gameConfig.dbPool === 100 ? 'bg-[#38BDF8] text-black' : 'bg-white/5 text-neutral-400'
                       }`}
                     >
                       100
@@ -1033,7 +1033,7 @@ export const handler = async (event) => {
                     <button
                       onClick={() => setGameConfig({ ...gameConfig, computeWorker: 'lambda' })}
                       className={`flex-1 py-2 rounded-lg text-[11px] font-mono font-semibold transition-all ${
-                        gameConfig.computeWorker === 'lambda' ? 'bg-[#B4A06E] text-black' : 'bg-white/5 text-neutral-400'
+                        gameConfig.computeWorker === 'lambda' ? 'bg-[#38BDF8] text-black' : 'bg-white/5 text-neutral-400'
                       }`}
                     >
                       LAMBDA QUEUE
@@ -1057,7 +1057,7 @@ export const handler = async (event) => {
               <button
                 onClick={runArchitectGame}
                 disabled={gameRunning}
-                className="px-8 py-4 bg-[#B4A06E] hover:bg-white text-black font-mono text-sm uppercase tracking-widest font-bold rounded-2xl flex items-center gap-3 shadow-xl shadow-[#B4A06E]/20 transition-all active:scale-95 disabled:opacity-50"
+                className="px-8 py-4 bg-[#38BDF8] hover:bg-white text-black font-mono text-sm uppercase tracking-widest font-bold rounded-2xl flex items-center gap-3 shadow-xl shadow-[#38BDF8]/20 transition-all active:scale-95 disabled:opacity-50"
               >
                 {gameRunning ? (
                   <>
@@ -1110,7 +1110,7 @@ export const handler = async (event) => {
                     <strong className="text-white font-mono uppercase">Diagnosis:</strong> {gameResult.diagnosis}
                   </div>
                   <div className="text-neutral-300">
-                    <strong className="text-[#B4A06E] font-mono uppercase">Engineering Recommendation:</strong> {gameResult.recommendation}
+                    <strong className="text-[#38BDF8] font-mono uppercase">Engineering Recommendation:</strong> {gameResult.recommendation}
                   </div>
                 </div>
               </div>

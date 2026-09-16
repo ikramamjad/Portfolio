@@ -94,7 +94,7 @@ export default function ProjectDrawer({ project, onClose }) {
         {/* Top Header Sticky Bar */}
         <div className="sticky top-0 z-30 px-6 py-5 bg-[#0a0c12]/95 backdrop-blur-md border-b border-white/10 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <span className="px-2.5 py-1 text-[10px] font-mono uppercase tracking-widest bg-[#B4A06E]/15 text-[#B4A06E] border border-[#B4A06E]/30">
+            <span className="px-2.5 py-1 text-[10px] font-mono uppercase tracking-widest bg-[#38BDF8]/15 text-[#38BDF8] border border-[#38BDF8]/30">
               {project.category}
             </span>
             <span className="text-xs font-mono text-neutral-400">
@@ -116,7 +116,7 @@ export default function ProjectDrawer({ project, onClose }) {
           
           {/* Title & Overview */}
           <div>
-            <span className="text-xs font-mono text-[#B4A06E] tracking-widest uppercase block mb-1">
+            <span className="text-xs font-mono text-[#38BDF8] tracking-widest uppercase block mb-1">
               01 // DEEP DIVE ARCHITECTURE
             </span>
             <h2 className="text-2xl sm:text-3xl font-light tracking-tight text-white mb-4">
@@ -128,16 +128,16 @@ export default function ProjectDrawer({ project, onClose }) {
           </div>
 
           {/* Verified Metrics Grid */}
-          <div className="border border-white/10 bg-[#0e1017] p-4 rounded-xl">
+          <div className="border border-white/10 bg-slate-900/70 p-4 rounded-xl">
             <span className="text-[11px] font-mono text-neutral-400 uppercase tracking-widest block mb-3 flex items-center gap-2">
-              <Activity className="w-3.5 h-3.5 text-[#B4A06E]" />
+              <Activity className="w-3.5 h-3.5 text-[#38BDF8]" />
               BENCHMARKED PRODUCTION METRICS
             </span>
             <div className="grid grid-cols-3 gap-3 text-center">
               {currentSpec.metrics.map((m, i) => (
                 <div key={i} className="p-3 bg-white/[0.02] border border-white/5 rounded-lg">
                   <span className="text-xs font-mono text-neutral-500 block mb-0.5">{m.label}</span>
-                  <span className="text-xl sm:text-2xl font-mono text-[#B4A06E] font-medium block">{m.value}</span>
+                  <span className="text-xl sm:text-2xl font-mono text-[#38BDF8] font-medium block">{m.value}</span>
                   <span className="text-[10px] text-neutral-400 block mt-0.5">{m.detail}</span>
                 </div>
               ))}
@@ -146,18 +146,18 @@ export default function ProjectDrawer({ project, onClose }) {
 
           {/* The Technical Bottleneck */}
           <div className="border-t border-white/10 pt-6">
-            <span className="text-xs font-mono text-[#B4A06E] tracking-widest uppercase block mb-2 flex items-center gap-2">
+            <span className="text-xs font-mono text-[#38BDF8] tracking-widest uppercase block mb-2 flex items-center gap-2">
               <Zap className="w-3.5 h-3.5" />
               02 // THE TECHNICAL BOTTLENECK
             </span>
-            <p className="text-sm text-neutral-300 font-light leading-relaxed bg-[#12141d] p-4 border border-white/5 rounded-lg">
+            <p className="text-sm text-neutral-300 font-light leading-relaxed bg-slate-900/50 p-4 border border-white/5 rounded-lg">
               {currentSpec.bottleneck}
             </p>
           </div>
 
           {/* Architectural Solution */}
           <div className="border-t border-white/10 pt-6">
-            <span className="text-xs font-mono text-[#B4A06E] tracking-widest uppercase block mb-2 flex items-center gap-2">
+            <span className="text-xs font-mono text-[#38BDF8] tracking-widest uppercase block mb-2 flex items-center gap-2">
               <Server className="w-3.5 h-3.5" />
               03 // ARCHITECTURAL SOLUTION
             </span>
@@ -172,10 +172,10 @@ export default function ProjectDrawer({ project, onClose }) {
               </span>
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                 {currentSpec.diagram.map((step, idx) => (
-                  <div key={idx} className="p-3 bg-[#0e1017] border border-white/10 rounded-lg">
+                  <div key={idx} className="p-3 bg-slate-900/70 border border-white/10 rounded-lg">
                     <div className="flex items-center justify-between mb-1">
                       <span className="text-xs font-mono text-white font-medium">{step.stage}</span>
-                      <span className="text-[10px] font-mono text-[#B4A06E]">#{idx + 1}</span>
+                      <span className="text-[10px] font-mono text-[#38BDF8]">#{idx + 1}</span>
                     </div>
                     <span className="text-[11px] font-mono text-neutral-400 block mb-1">{step.tech}</span>
                     <span className="text-[10px] text-neutral-500 font-light block">{step.desc}</span>
@@ -188,14 +188,14 @@ export default function ProjectDrawer({ project, onClose }) {
           {/* Key Engineering Highlights */}
           {project.highlights && (
             <div className="border-t border-white/10 pt-6">
-              <span className="text-xs font-mono text-[#B4A06E] tracking-widest uppercase block mb-3 flex items-center gap-2">
+              <span className="text-xs font-mono text-[#38BDF8] tracking-widest uppercase block mb-3 flex items-center gap-2">
                 <CheckCircle2 className="w-3.5 h-3.5" />
                 04 // PRODUCTION DELIVERABLES
               </span>
               <ul className="space-y-2 text-xs text-neutral-300 font-light">
                 {project.highlights.map((h, i) => (
                   <li key={i} className="flex items-start gap-2.5 p-2 rounded bg-white/[0.02]">
-                    <span className="text-[#B4A06E] font-mono shrink-0">▹</span>
+                    <span className="text-[#38BDF8] font-mono shrink-0">▹</span>
                     <span>{h}</span>
                   </li>
                 ))}
@@ -205,7 +205,7 @@ export default function ProjectDrawer({ project, onClose }) {
 
           {/* Tech Stack Chips */}
           <div className="border-t border-white/10 pt-6">
-            <span className="text-xs font-mono text-[#B4A06E] tracking-widest uppercase block mb-3 flex items-center gap-2">
+            <span className="text-xs font-mono text-[#38BDF8] tracking-widest uppercase block mb-3 flex items-center gap-2">
               <Cpu className="w-3.5 h-3.5" />
               05 // SYSTEM TECHNOLOGIES
             </span>
@@ -229,7 +229,7 @@ export default function ProjectDrawer({ project, onClose }) {
             href="https://github.com/ikram-amjad"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 px-4 py-3 bg-[#B4A06E] hover:bg-white text-black font-mono text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-colors"
+            className="flex-1 px-4 py-3 bg-[#38BDF8] hover:bg-white text-black font-mono text-xs uppercase tracking-widest font-bold flex items-center justify-center gap-2 transition-colors"
           >
             <Github className="w-4 h-4" />
             <span>GitHub Repository ↗</span>

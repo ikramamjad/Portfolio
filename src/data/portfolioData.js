@@ -1,26 +1,41 @@
-// Portfolio data for Ikram Amjad - Computer Engineer | Full-Stack & Backend Developer
+// Portfolio data for Ikram Amjad - Computer Engineer & Full-Stack Engineer
 
 export const personalInfo = {
   name: "Ikram Amjad",
-  title: "Full-Stack Developer",
-  subtitle: "Computer Engineer | Full-Stack Developer | Prompt Engineer",
-  tagline: "Building scalable, efficient, and reliable web applications, cloud architectures & AI integrations",
-  bio: "Full-Stack Developer with hands-on experience building scalable, efficient, and reliable web applications. Currently working at Cuboid Incorporation as Full Stack Engineer and WebMantis as Back End Developer, with deep focus on Node.js, Express, MongoDB, PostgreSQL, React.js, Redis caching & queues, AWS cloud infrastructure, and prompt engineering.",
+  title: "Computer Engineer & Full-Stack Engineer",
+  subtitle: "Computer Engineer | Full-Stack Engineer | Prompt Engineer",
+  tagline: "Building scalable, high-throughput web applications, robust database architectures & intelligent AI prompt pipelines",
+  bio: "Computer Engineer and Full-Stack Engineer with hands-on experience building scalable, efficient, and reliable web applications. Currently working at Cuboid Incorporation as Full Stack Engineer and WebMantis as Back End Developer, with deep focus on MongoDB, MERN Stack, Express.js, MySQL, PostgreSQL, Next.js, React.js, Angular.js, Node.js, PHP, Laravel, and Prompt Engineering.",
   location: "Islamabad, Pakistan",
   email: "ikramamjad10@gmail.com",
   availability: "Active Engineer @ Cuboid & WebMantis",
   linkedin: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
   socials: {
     linkedin: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
-    github: "https://github.com/ikram-amjad",
+    github: "https://github.com/ikramamjad",
     email: "mailto:ikramamjad10@gmail.com"
   }
 };
 
+export const coreStacks = [
+  { name: "MongoDB", category: "Databases", badge: "NoSQL DB", color: "#47A248", desc: "Schema design, aggregation pipelines, document modeling & high-speed indexing" },
+  { name: "MERN", category: "Full-Stack", badge: "Full-Stack Architecture", color: "#00F0FF", desc: "MongoDB, Express.js, React.js, Node.js end-to-end production web applications" },
+  { name: "Express.js", category: "Backend", badge: "Backend Framework", color: "#68A063", desc: "High-throughput RESTful APIs, custom middleware pipelines, auth & routing" },
+  { name: "MySQL", category: "Databases", badge: "Relational DB", color: "#00758F", desc: "Relational database management, joins, schema normalization & stored procedures" },
+  { name: "PostgreSQL", category: "Databases", badge: "Relational DB", color: "#4169E1", desc: "ACID compliance, complex querying, transaction isolation & relational modeling" },
+  { name: "Next.js", category: "Full-Stack", badge: "React Framework", color: "#FFFFFF", desc: "Server-side rendering (SSR), App Router, server actions & hybrid rendering" },
+  { name: "React.js", category: "Frontend", badge: "Frontend Library", color: "#61DAFB", desc: "Interactive SPAs, custom hooks, reactive state management & component hierarchy" },
+  { name: "Angular.js", category: "Frontend", badge: "Frontend Framework", color: "#DD0031", desc: "Two-way data binding, dependency injection & structured enterprise UI components" },
+  { name: "Node.js", category: "Backend", badge: "Runtime Engine", color: "#339933", desc: "Asynchronous event-driven backend microservices, event loop & high concurrency" },
+  { name: "PHP", category: "Backend", badge: "Server Scripting", color: "#777BB4", desc: "Server-side scripting, MVC design patterns, API endpoints & backend services" },
+  { name: "Laravel", category: "Backend", badge: "PHP Framework", color: "#FF2D20", desc: "Eloquent ORM, Artisan CLI, REST services, database migrations & MVC architecture" },
+  { name: "Prompt Engineer", category: "AI & LLM", badge: "Generative AI", color: "#39FF14", desc: "LLM prompt optimization, chain-of-thought, system prompt steering & AI agents" },
+];
+
 export const stats = [
-  { label: "Engineering Foundation", value: "COMSATS", accent: "cyan" },
-  { label: "Active Industry Roles", value: "2", accent: "purple" },
-  { label: "Certifications", value: "AWS & Oracle", accent: "green" },
+  { label: "Core Tech Stacks", value: "12+", accent: "cyan" },
+  { label: "Active Roles", value: "2", accent: "purple" },
+  { label: "Engineering Degree", value: "COMSATS", accent: "green" },
   { label: "Leadership", value: "IEEE PM", accent: "pink" }
 ];
 
@@ -28,7 +43,8 @@ export const skillsData = [
   // Backend
   { name: "Node.js", category: "Backend", level: 95, color: "#339933", desc: "Event loop, asynchronous architecture, microservices, clustering" },
   { name: "Express.js", category: "Backend", level: 94, color: "#00F0FF", desc: "RESTful APIs, custom middleware pipelines, authentication, routing" },
-  { name: "PHP & Laravel", category: "Backend", level: 88, color: "#FF2D20", desc: "Eloquent ORM, MVC pattern, blade engine, backend services" },
+  { name: "Laravel", category: "Backend", level: 90, color: "#FF2D20", desc: "Eloquent ORM, MVC pattern, Artisan CLI, REST services" },
+  { name: "PHP", category: "Backend", level: 88, color: "#777BB4", desc: "Server-side scripting, OOP architecture, database integrations" },
   { name: "RESTful APIs", category: "Backend", level: 96, color: "#8B5CF6", desc: "API design, Postman integration testing, payload validation, swagger" },
   { name: "Server Architecture", category: "Backend", level: 92, color: "#39FF14", desc: "High concurrency, modular monolithic & microservices design" },
 
@@ -39,15 +55,16 @@ export const skillsData = [
   { name: "Redis", category: "Database", level: 90, color: "#DC382D", desc: "In-memory caching, message queues, rate limiters, session stores" },
 
   // Cloud & AI
+  { name: "Prompt Engineering", category: "Cloud & AI", level: 95, color: "#39FF14", desc: "LLM prompt optimization, chain-of-thought, system prompts, AI integrations" },
   { name: "AWS (S3, Lambda)", category: "Cloud & AI", level: 89, color: "#FF9900", desc: "Serverless compute, object storage buckets, IAM policies, cloud architecture" },
-  { name: "Prompt Engineering", category: "Cloud & AI", level: 93, color: "#39FF14", desc: "LLM prompt optimization, chain-of-thought, system prompts, AI integrations" },
   { name: "AI & ML Foundations", category: "Cloud & AI", level: 88, color: "#F80000", desc: "AWS & Oracle certified foundations, predictive pipelines, API embeddings" },
 
-  // Frontend
-  { name: "React.js", category: "Frontend", level: 93, color: "#00F0FF", desc: "MERN stack frontend, hooks, context API, state management, modern SPAs" },
+  // Frontend & Full-Stack
+  { name: "MERN Stack", category: "Frontend", level: 96, color: "#00F0FF", desc: "MongoDB, Express.js, React.js, Node.js unified full-stack architecture" },
+  { name: "Next.js", category: "Frontend", level: 92, color: "#FFFFFF", desc: "Server-side rendering, App Router, hybrid static/server apps, API routes" },
+  { name: "React.js", category: "Frontend", level: 94, color: "#61DAFB", desc: "MERN stack frontend, hooks, context API, state management, modern SPAs" },
   { name: "Angular.js", category: "Frontend", level: 86, color: "#DD0031", desc: "Two-way data binding, dependency injection, component structure" },
   { name: "JavaScript / ES6+", category: "Frontend", level: 95, color: "#F7DF1E", desc: "Async/await, closures, functional programming, DOM manipulation" },
-  { name: "Three.js / WebGL", category: "Frontend", level: 85, color: "#8B5CF6", desc: "3D interactive scenes, React Three Fiber, shaders, particle systems" },
   { name: "Tailwind CSS", category: "Frontend", level: 92, color: "#38BDF8", desc: "Utility-first modern responsive interfaces, glassmorphism, animations" },
 
   // Management & Tools
