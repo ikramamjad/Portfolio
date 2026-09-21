@@ -17,17 +17,14 @@ const roles = [
 ];
 
 const heroStacks = [
-  "MongoDB",
-  "MERN",
-  "Express.js",
-  "MySQL",
-  "PostgreSQL",
+  "MERN Stack",
   "Next.js",
-  "React.js",
-  "Angular.js",
-  "Node.js",
-  "PHP",
+  "PostgreSQL",
+  "MySQL",
   "Laravel",
+  "PHP",
+  "Angular.js",
+  "Redis",
   "Prompt Engineer",
 ];
 const HLS_SOURCE =
@@ -163,56 +160,52 @@ export const Hero: React.FC<HeroProps> = ({
       {/* Hero Content (centered, z-10) */}
       <div className="relative z-10 max-w-4xl mx-auto px-6 pt-24 pb-16 flex flex-col items-center text-center">
         {/* Eyebrow: Computer Engineer & Full-Stack Engineer */}
-        <div className="blur-in text-xs text-muted uppercase tracking-[0.25em] mb-6 flex items-center gap-2.5">
-          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-          <span>PORTFOLIO // COMPUTER ENGINEER &amp; FULL-STACK ENGINEER</span>
+        <div className="blur-in text-[10px] sm:text-xs text-muted uppercase tracking-[0.2em] sm:tracking-[0.25em] mb-4 sm:mb-6 flex items-center justify-center gap-2">
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+          <span className="text-center">PORTFOLIO // COMPUTER ENGINEER &amp; FULL-STACK ENGINEER</span>
         </div>
 
-        {/* Name: text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-text-primary mb-6 — "IKRAM AMJAD". Class name-reveal */}
-        <h1 className="name-reveal text-6xl md:text-8xl lg:text-9xl font-display italic leading-[0.9] tracking-tight text-text-primary mb-6 select-none">
+        {/* Name: IKRAM AMJAD */}
+        <h1 className="name-reveal text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-display italic leading-[0.95] sm:leading-[0.9] tracking-tight text-text-primary mb-4 sm:mb-6 select-none break-words">
           IKRAM AMJAD
         </h1>
 
-        {/* Role line: "A {role} based in Islamabad." — cycling through engineering roles */}
-        <p className="blur-in text-base md:text-xl text-text-primary/90 font-light mb-4">
+        {/* Role line: "A {role} based in Islamabad." */}
+        <p className="blur-in text-sm sm:text-base md:text-xl text-text-primary/90 font-light mb-4">
           A{" "}
           <span
             key={roleIndex}
-            className="font-display italic text-text-primary animate-role-fade-in inline-block text-xl md:text-2xl px-1"
+            className="font-display italic text-text-primary animate-role-fade-in inline-block text-lg sm:text-xl md:text-2xl px-1"
           >
             {roles[roleIndex]}
           </span>{" "}
           based in Islamabad.
         </p>
 
-        {/* Description: Focused on Computer Engineering & Full-Stack capabilities */}
-        <p className="blur-in text-sm md:text-base text-muted max-w-xl mb-8 leading-relaxed">
+        {/* Description */}
+        <p className="blur-in text-xs sm:text-sm md:text-base text-muted max-w-xl mb-6 sm:mb-8 leading-relaxed px-2">
           Specializing in scalable full-stack web applications, high-throughput microservices,
           optimized database architectures, and intelligent prompt engineering.
         </p>
 
-        {/* CTA Buttons (inline-flex gap-4) */}
-        <div className="blur-in inline-flex items-center justify-center gap-4 flex-wrap">
-          {/* "See Works": Solid button. Default: bg-text-primary text-bg. Hover: bg-bg text-text-primary with accent gradient border ring. */}
+        {/* CTA Buttons */}
+        <div className="blur-in flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full sm:w-auto px-4 sm:px-0">
           <button
             onClick={handleScrollToWork}
-            className="group relative inline-flex items-center justify-center rounded-full text-sm font-medium px-7 py-3.5 transition-all duration-300 hover:scale-105 focus:outline-none"
+            className="w-full sm:w-auto group relative inline-flex items-center justify-center rounded-full text-xs sm:text-sm font-medium px-7 py-3.5 transition-all duration-300 hover:scale-105 focus:outline-none"
           >
-            {/* Gradient border ring on hover */}
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
             <span className="relative z-10 w-full h-full rounded-full bg-text-primary text-bg group-hover:bg-bg group-hover:text-text-primary transition-colors duration-300 px-6 py-2.5">
               Explore Projects
             </span>
           </button>
 
-          {/* "Reach out...": Outlined button. Default: border-2 border-stroke bg-bg text-text-primary. Hover: border-transparent with accent gradient border ring. */}
           <button
             onClick={handleScrollToContact}
-            className="group relative inline-flex items-center justify-center rounded-full text-sm font-medium p-[2px] transition-all duration-300 hover:scale-105 focus:outline-none"
+            className="w-full sm:w-auto group relative inline-flex items-center justify-center rounded-full text-xs sm:text-sm font-medium p-[2px] transition-all duration-300 hover:scale-105 focus:outline-none"
           >
-            {/* Gradient ring on hover */}
             <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10 rounded-full border-2 border-stroke group-hover:border-transparent bg-bg text-text-primary transition-all duration-300 px-7 py-3">
+            <span className="relative z-10 w-full rounded-full border-2 border-stroke group-hover:border-transparent bg-bg text-text-primary transition-all duration-300 px-7 py-2.5 sm:py-3 text-center">
               Reach out...
             </span>
           </button>

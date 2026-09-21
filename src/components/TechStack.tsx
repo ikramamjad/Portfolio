@@ -60,7 +60,7 @@ export const TechStack: React.FC = () => {
           <div className="inline-flex items-center gap-2 self-start md:self-auto px-4 py-2 rounded-full border border-stroke bg-surface/60 backdrop-blur-md">
             <span className="w-2 h-2 rounded-full bg-cyan-400 animate-ping" />
             <span className="text-xs font-mono text-muted">
-              12 Production Stacks
+              {coreStacks.length} Production Stacks
             </span>
           </div>
         </motion.div>

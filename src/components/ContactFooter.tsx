@@ -130,9 +130,9 @@ export const ContactFooter: React.FC = () => {
               <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[1px]" />
               <span className="absolute inset-[-1.5px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
 
-              <span className="relative z-10 inline-flex items-center gap-3 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-8 py-4 text-sm sm:text-base font-medium text-text-primary group-hover:border-transparent transition-colors">
-                <span>ikramamjad10@gmail.com</span>
-                <span className="text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1">
+              <span className="relative z-10 inline-flex items-center gap-2 sm:gap-3 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-base font-medium text-text-primary group-hover:border-transparent transition-colors">
+                <span className="break-all sm:break-normal">ikramamjad10@gmail.com</span>
+                <span className="text-sm sm:text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0">
                   ↗
                 </span>
               </span>
@@ -141,7 +141,7 @@ export const ContactFooter: React.FC = () => {
         </div>
 
         {/* Footer Bar */}
-        <div className="mt-20 md:mt-28 pt-8 border-t border-stroke/50 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-16 md:mt-28 pt-8 border-t border-stroke/50 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
           {/* Status badge: Green pulsing dot + "Available for projects" */}
           <div className="inline-flex items-center gap-2.5 px-3.5 py-1.5 rounded-full border border-stroke bg-surface/40 backdrop-blur-md">
             <span className="relative flex h-2 w-2">
@@ -153,8 +153,8 @@ export const ContactFooter: React.FC = () => {
             </span>
           </div>
 
-          {/* Social links [Twitter, LinkedIn, Dribbble, GitHub] */}
-          <div className="flex items-center space-x-6">
+          {/* Social links */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {socialLinks.map((link) => (
               <a
                 key={link.name}

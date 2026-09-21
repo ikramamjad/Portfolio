@@ -18,22 +18,19 @@ export const personalInfo = {
 };
 
 export const coreStacks = [
-  { name: "MongoDB", category: "Databases", badge: "NoSQL DB", color: "#47A248", desc: "Schema design, aggregation pipelines, document modeling & high-speed indexing" },
-  { name: "MERN", category: "Full-Stack", badge: "Full-Stack Architecture", color: "#00F0FF", desc: "MongoDB, Express.js, React.js, Node.js end-to-end production web applications" },
-  { name: "Express.js", category: "Backend", badge: "Backend Framework", color: "#68A063", desc: "High-throughput RESTful APIs, custom middleware pipelines, auth & routing" },
-  { name: "MySQL", category: "Databases", badge: "Relational DB", color: "#00758F", desc: "Relational database management, joins, schema normalization & stored procedures" },
-  { name: "PostgreSQL", category: "Databases", badge: "Relational DB", color: "#4169E1", desc: "ACID compliance, complex querying, transaction isolation & relational modeling" },
+  { name: "MERN Stack", category: "Full-Stack", badge: "Full-Stack Architecture", color: "#00F0FF", desc: "MongoDB, Express.js, React.js, Node.js unified end-to-end production web applications" },
   { name: "Next.js", category: "Full-Stack", badge: "React Framework", color: "#FFFFFF", desc: "Server-side rendering (SSR), App Router, server actions & hybrid rendering" },
-  { name: "React.js", category: "Frontend", badge: "Frontend Library", color: "#61DAFB", desc: "Interactive SPAs, custom hooks, reactive state management & component hierarchy" },
-  { name: "Angular.js", category: "Frontend", badge: "Frontend Framework", color: "#DD0031", desc: "Two-way data binding, dependency injection & structured enterprise UI components" },
-  { name: "Node.js", category: "Backend", badge: "Runtime Engine", color: "#339933", desc: "Asynchronous event-driven backend microservices, event loop & high concurrency" },
-  { name: "PHP", category: "Backend", badge: "Server Scripting", color: "#777BB4", desc: "Server-side scripting, MVC design patterns, API endpoints & backend services" },
+  { name: "PostgreSQL", category: "Databases", badge: "Relational DB", color: "#4169E1", desc: "ACID compliance, complex querying, transaction isolation & relational modeling" },
+  { name: "MySQL", category: "Databases", badge: "Relational DB", color: "#00758F", desc: "Relational database management, joins, schema normalization & stored procedures" },
   { name: "Laravel", category: "Backend", badge: "PHP Framework", color: "#FF2D20", desc: "Eloquent ORM, Artisan CLI, REST services, database migrations & MVC architecture" },
+  { name: "PHP", category: "Backend", badge: "Server Scripting", color: "#777BB4", desc: "Server-side scripting, MVC design patterns, API endpoints & backend services" },
+  { name: "Angular.js", category: "Frontend", badge: "Frontend Framework", color: "#DD0031", desc: "Two-way data binding, dependency injection & structured enterprise UI components" },
+  { name: "Redis", category: "Databases", badge: "In-Memory Cache", color: "#DC382D", desc: "In-memory caching, message queues, rate limiters, session stores & high throughput" },
   { name: "Prompt Engineer", category: "AI & LLM", badge: "Generative AI", color: "#39FF14", desc: "LLM prompt optimization, chain-of-thought, system prompt steering & AI agents" },
 ];
 
 export const stats = [
-  { label: "Core Tech Stacks", value: "12+", accent: "cyan" },
+  { label: "Core Tech Stacks", value: "8+", accent: "cyan" },
   { label: "Active Roles", value: "2", accent: "purple" },
   { label: "Engineering Degree", value: "COMSATS", accent: "green" },
   { label: "Leadership", value: "IEEE PM", accent: "pink" }
@@ -41,15 +38,12 @@ export const stats = [
 
 export const skillsData = [
   // Backend
-  { name: "Node.js", category: "Backend", level: 95, color: "#339933", desc: "Event loop, asynchronous architecture, microservices, clustering" },
-  { name: "Express.js", category: "Backend", level: 94, color: "#00F0FF", desc: "RESTful APIs, custom middleware pipelines, authentication, routing" },
   { name: "Laravel", category: "Backend", level: 90, color: "#FF2D20", desc: "Eloquent ORM, MVC pattern, Artisan CLI, REST services" },
   { name: "PHP", category: "Backend", level: 88, color: "#777BB4", desc: "Server-side scripting, OOP architecture, database integrations" },
   { name: "RESTful APIs", category: "Backend", level: 96, color: "#8B5CF6", desc: "API design, Postman integration testing, payload validation, swagger" },
   { name: "Server Architecture", category: "Backend", level: 92, color: "#39FF14", desc: "High concurrency, modular monolithic & microservices design" },
 
   // Database & Caching
-  { name: "MongoDB", category: "Database", level: 95, color: "#47A248", desc: "MERN stack core, aggregation frameworks, schema modeling, indexing" },
   { name: "PostgreSQL", category: "Database", level: 92, color: "#4169E1", desc: "Relational modeling, complex queries, transactions, foreign keys" },
   { name: "MySQL", category: "Database", level: 91, color: "#00758F", desc: "Relational database management, joins, normalization, stored procedures" },
   { name: "Redis", category: "Database", level: 90, color: "#DC382D", desc: "In-memory caching, message queues, rate limiters, session stores" },
@@ -62,7 +56,6 @@ export const skillsData = [
   // Frontend & Full-Stack
   { name: "MERN Stack", category: "Frontend", level: 96, color: "#00F0FF", desc: "MongoDB, Express.js, React.js, Node.js unified full-stack architecture" },
   { name: "Next.js", category: "Frontend", level: 92, color: "#FFFFFF", desc: "Server-side rendering, App Router, hybrid static/server apps, API routes" },
-  { name: "React.js", category: "Frontend", level: 94, color: "#61DAFB", desc: "MERN stack frontend, hooks, context API, state management, modern SPAs" },
   { name: "Angular.js", category: "Frontend", level: 86, color: "#DD0031", desc: "Two-way data binding, dependency injection, component structure" },
   { name: "JavaScript / ES6+", category: "Frontend", level: 95, color: "#F7DF1E", desc: "Async/await, closures, functional programming, DOM manipulation" },
   { name: "Tailwind CSS", category: "Frontend", level: 92, color: "#38BDF8", desc: "Utility-first modern responsive interfaces, glassmorphism, animations" },
@@ -74,76 +67,99 @@ export const skillsData = [
 
 export const projectsData = [
   {
-    id: "mantis-ai-engine",
-    title: "WebMantis AI & Backend Engine",
-    category: "Backend & AI",
-    badge: "Production System",
-    description: "High-throughput server-side architecture powering dynamic AI prompt engineering pipelines and automated agent workflows.",
-    longDescription: "Developed at WebMantis, this robust backend system leverages Node.js, Express, and Redis queues to process concurrent LLM interactions with optimized prompt templates, sub-second latency caching, and automated fallback logic.",
-    tech: ["Node.js", "Express.js", "MongoDB", "Redis", "AWS Lambda", "Prompt Engineering"],
+    id: "road-accident-detection",
+    title: "Road Accident Detection System",
+    category: "Computer Vision & AI",
+    badge: "Computer Vision & AI",
+    description: "End-to-end real-time road accident detection analyzing live video feeds and RTSP streams to detect collisions, falls, and trajectory kinematics.",
+    longDescription: "An end-to-end multi-modal road accident detection system that analyzes live traffic video feeds and camera streams in real time. Combines spatial object detection, persistent tracking, human skeletal posture analysis, and strictly causal temporal sequence modeling to reliably detect accidents.",
+    tech: ["Python", "PyTorch", "OpenCV", "Computer Vision", "YOLO", "Kinematics"],
     highlights: [
-      "Engineered high-concurrency Node.js REST API with Redis queue caching",
-      "Integrated AWS S3 and Lambda for scalable serverless asset pipelines",
-      "Implemented comprehensive Postman API test automation suite"
+      "Real-time RTSP camera stream ingestion and video frame parsing",
+      "Multi-modal fusion combining spatial detection, skeletal posture, and trajectory kinematics",
+      "Strictly causal temporal sequence modeling to eliminate false positives"
     ],
-    liveUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
-    githubUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
+    liveUrl: "https://github.com/ikramamjad/Road-Accident-Detection",
+    githubUrl: "https://github.com/ikramamjad/Road-Accident-Detection",
+    image: "/thumbnails/road-accident-detection.jpg",
     color: "#00F0FF",
-    stats: { latency: "<35ms", caching: "Redis Tier", status: "Active Production" }
+    stats: { model: "YOLO + Kinematics", latency: "Real-Time RTSP", type: "Computer Vision" }
   },
   {
-    id: "cuboid-fullstack-suite",
-    title: "Cuboid Full Stack Enterprise Platform",
-    category: "Full Stack",
-    badge: "Flagship Architecture",
-    description: "End-to-end full-stack web application orchestrating multi-database connectivity (PostgreSQL & MongoDB) with dynamic React & Angular interfaces.",
-    longDescription: "Architected at Cuboid Incorporation, this platform provides seamless real-time enterprise operations. It couples robust relational data modeling in PostgreSQL with fast MERN stack frontend modules, secure JWT authentication, and automated error logging.",
-    tech: ["React.js", "Angular.js", "Node.js", "PostgreSQL", "MongoDB", "Tailwind CSS"],
+    id: "ai-interview",
+    title: "AI Interview & Proctoring Platform",
+    category: "Full-Stack AI & Next.js",
+    badge: "Interactive AI Suite",
+    description: "Next.js 16, React 19, and Three.js AI-driven interview and automated proctoring platform with Express & Prisma backend.",
+    longDescription: "A cutting-edge interactive platform delivering automated AI interview simulations and proctoring. Features 3D holographic digital interviewer meshes powered by Three.js, real-time candidate emotion and gaze tracking, and an automated Express.js backend with Prisma ORM.",
+    tech: ["Next.js", "React 19", "Three.js", "Node.js", "Prisma", "Express.js", "Tailwind CSS"],
     highlights: [
-      "Dual database integration uniting MongoDB flexibility with PostgreSQL relational rigor",
-      "Modular frontend components built with React.js and Angular.js",
-      "Enterprise authentication with role-based access control (RBAC)"
+      "Interactive 3D digital human interviewer interface built with Three.js and React 19",
+      "Full-stack Next.js 16 App Router paired with scalable Express and Prisma database service",
+      "Automated audio speech analysis, proctoring alerts, and candidate evaluation metrics"
     ],
-    liveUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
-    githubUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
+    liveUrl: "https://github.com/ikramamjad/AI-interview",
+    githubUrl: "https://github.com/ikramamjad/AI-interview",
+    image: "/thumbnails/ai-interview.jpg",
     color: "#8B5CF6",
-    stats: { uptime: "99.9%", db: "PostgreSQL & Mongo", scale: "Enterprise" }
+    stats: { stack: "Next.js 16 & Three.js", db: "Prisma ORM", ai: "Live Proctoring" }
   },
   {
-    id: "aws-redis-pipeline",
-    title: "CloudFlow AWS & Redis Microservices",
-    category: "Cloud & DevOps",
-    badge: "Cloud Architecture",
-    description: "Distributed cloud microservice pipeline combining AWS S3, Lambda serverless executions, and Redis pub/sub queues for automated background jobs.",
-    longDescription: "A specialized cloud infrastructure setup demonstrating optimal serverless patterns. It processes user file uploads directly to AWS S3, invokes asynchronous Lambda workers, and uses Redis key-value storage for instantaneous distributed state coordination.",
-    tech: ["AWS (S3, Lambda)", "Redis", "Node.js", "RESTful APIs", "Postman"],
+    id: "food",
+    title: "Food Delivery & Ordering API",
+    category: "Backend & REST API",
+    badge: "RESTful Microservice",
+    description: "Production-ready food ordering and delivery REST API engineered with Node.js, Express, and MongoDB with secure JWT authentication.",
+    longDescription: "Robust server-side REST API application designed for high-concurrency food ordering workflows. Implements secure JWT authentication, role management (customers, vendors, admins), shopping cart state validation, and end-to-end order status transitions.",
+    tech: ["Node.js", "Express.js", "MongoDB", "Mongoose", "JWT Auth", "RESTful APIs"],
     highlights: [
-      "Serverless event-driven architecture triggered by AWS S3 events",
-      "Redis caching layer reducing database read load by over 65%",
-      "Thoroughly verified and benchmarked using automated Postman collection runs"
+      "Robust JWT token authentication with role-based access control (RBAC)",
+      "High-efficiency MongoDB schema design with Mongoose models and indexing",
+      "Modular controller design handling menu items, shopping carts, and order dispatch"
     ],
-    liveUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
-    githubUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
-    color: "#39FF14",
-    stats: { cloud: "AWS Serverless", queues: "Redis Pub/Sub", load: "-65% DB" }
+    liveUrl: "https://github.com/ikramamjad/food",
+    githubUrl: "https://github.com/ikramamjad/food",
+    image: "/thumbnails/food.jpg",
+    color: "#FF9900",
+    stats: { arch: "Express & Node.js", db: "MongoDB / Mongoose", auth: "JWT Secure" }
   },
   {
-    id: "ieee-project-manager-suite",
-    title: "IEEE COMSATS Project Command Center",
-    category: "Full Stack & Management",
-    badge: "Leadership & Tech",
-    description: "Centralized project management and event dispatch portal developed to organize technical initiatives, student teams, and engineering competitions.",
-    longDescription: "Built during my tenure as Project Manager at IEEE COMSATS. Enabled team coordinators to assign deliverables, track engineering milestones, register participants, and publish real-time notifications to community members.",
-    tech: ["MERN Stack", "Express.js", "MongoDB", "React.js", "PHP / Laravel"],
+    id: "shop-sphere",
+    title: "ShopSphere E-Commerce Backend",
+    category: "E-Commerce & FinTech",
+    badge: "FinTech Platform",
+    description: "Comprehensive e-commerce backend platform with role-based product catalog management, JWT authentication, and Stripe PaymentIntents integration.",
+    longDescription: "An enterprise-grade e-commerce backend service built with Node.js, Express, and MongoDB. Features secure Stripe PaymentIntents integration for smooth online payments, role-protected admin catalog management, user order histories, and automated payment verification.",
+    tech: ["Node.js", "Express.js", "MongoDB", "Stripe API", "JWT", "RESTful APIs"],
     highlights: [
-      "Spearheaded technical development while leading a multidisciplinary team as Project Manager",
-      "Managed registration and logistics for large-scale campus technology events",
-      "Implemented automated email notifications and attendee tracking"
+      "Stripe PaymentIntents integration for PCI-compliant checkout and order fulfillment",
+      "Admin role-based access control for dynamic product additions, updates, and removals",
+      "Robust input validation, middleware error handling, and transactional consistency"
     ],
-    liveUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
-    githubUrl: "https://www.linkedin.com/in/ikram-amjad-8963b4195",
-    color: "#FF007F",
-    stats: { role: "Project Manager", impact: "IEEE Community", stack: "MERN" }
+    liveUrl: "https://github.com/ikramamjad/Shop-Sphere",
+    githubUrl: "https://github.com/ikramamjad/Shop-Sphere",
+    image: "/thumbnails/shop-sphere.jpg",
+    color: "#38BDF8",
+    stats: { payments: "Stripe API", db: "MongoDB NoSQL", security: "JWT & RBAC" }
+  },
+  {
+    id: "ride-sharing",
+    title: "Ride-Sharing Mobility Platform",
+    category: "Full-Stack Mobility",
+    badge: "On-Demand Mobility",
+    description: "On-demand ride-hailing mobility service architecture inspired by Uber and InDrive, featuring ride booking and geospatial matching.",
+    longDescription: "Engineered to deliver high-availability mobility services. Implements passenger ride booking, geospatial proximity algorithms for nearest driver allocation, dynamic fare calculation across vehicle tiers, and real-time ride state transitions.",
+    tech: ["Node.js", "Express.js", "MongoDB", "Geospatial", "REST API", "Real-Time Tracking"],
+    highlights: [
+      "Geospatial driver-rider matchmaking algorithms for instant trip dispatch",
+      "Dynamic fare estimation matrix supporting Economy and Comfort tiers",
+      "End-to-end trip status lifecycle from booking request to completion"
+    ],
+    liveUrl: "https://github.com/ikramamjad/Ride-Sharing",
+    githubUrl: "https://github.com/ikramamjad/Ride-Sharing",
+    image: "/thumbnails/ride-sharing.jpg",
+    color: "#10B981",
+    stats: { model: "On-Demand Mobility", geo: "Geospatial Matching", dispatch: "Real-Time State" }
   }
 ];
 

@@ -98,8 +98,10 @@ export const Explorations: React.FC = () => {
 
     if (!section || !pinned || !col1 || !col2) return;
 
-    const ctx = gsap.context(() => {
-      // Layer 1: Pinned Center (z-10) with GSAP ScrollTrigger.create({ pin: contentRef, pinSpacing: false })
+    const mm = gsap.matchMedia();
+
+    mm.add("(min-width: 1024px)", () => {
+      // Layer 1: Pinned Center (z-10) with GSAP ScrollTrigger
       ScrollTrigger.create({
         trigger: section,
         start: "top top",
@@ -109,7 +111,6 @@ export const Explorations: React.FC = () => {
       });
 
       // Layer 2: Parallax Columns movement
-      // Column 1 moves smoothly upward
       gsap.fromTo(
         col1,
         { y: 100 },
@@ -125,7 +126,6 @@ export const Explorations: React.FC = () => {
         }
       );
 
-      // Column 2 starts lower and moves faster for depth difference
       gsap.fromTo(
         col2,
         { y: 350 },
@@ -140,25 +140,131 @@ export const Explorations: React.FC = () => {
           },
         }
       );
-    }, section);
+    });
 
-    return () => ctx.revert();
+    return () => mm.revert();
   }, []);
+
+  const allItems = [...column1Items, ...column2Items];
 
   return (
     <section
       id="explorations"
       ref={sectionRef}
-      className="relative min-h-[300vh] bg-bg overflow-hidden"
+      className="relative bg-bg overflow-hidden lg:min-h-[300vh]"
     >
-      {/* Layer 1: Pinned Center (z-10) */}
-      <div
-        ref={pinnedContentRef}
-        className="h-screen w-full flex flex-col items-center justify-center text-center px-6 pointer-events-none z-10"
-      >
-        <div className="max-w-xl mx-auto pointer-events-auto">
-          {/* Eyebrow: "Explorations" */}
-          <div className="flex items-center justify-center gap-3 mb-4">
+      {/* --- DESKTOP VIEW (lg:block): Pinned Center + Parallax Flanks --- */}
+      <div className="hidden lg:block">
+        {/* Layer 1: Pinned Center (z-10) */}
+        <div
+          ref={pinnedContentRef}
+          className="h-screen w-full flex flex-col items-center justify-center text-center px-6 pointer-events-none z-10"
+        >
+          <div className="max-w-xl mx-auto pointer-events-auto">
+            {/* Eyebrow */}
+            <div className="flex items-center justify-center gap-3 mb-4">
+              <span className="w-8 h-px bg-stroke" />
+              <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
+                Engineering Lab
+              </span>
+              <span className="w-8 h-px bg-stroke" />
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-normal text-text-primary mb-4 tracking-tight">
+              Interactive{" "}
+              <span className="font-display italic font-normal">explorations</span>
+            </h2>
+
+            {/* Subtext + GitHub button */}
+            <p className="text-sm md:text-base text-muted max-w-md mx-auto mb-8 leading-relaxed">
+              Experiments in Full-Stack UX, Next.js server components, Three.js shaders,
+              and AI prompt vectors.
+            </p>
+
+            <a
+              href="https://github.com/ikramamjad"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex items-center rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105"
+            >
+              <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-6 py-3 text-xs uppercase tracking-widest text-text-primary group-hover:border-transparent transition-colors">
+                <span>Explore on GitHub</span>
+                <span className="text-xs transition-transform duration-300 group-hover:translate-x-1">
+                  ↗
+                </span>
+              </span>
+            </a>
+          </div>
+        </div>
+
+        {/* Layer 2: Parallax Columns (z-20, absolute) */}
+        <div className="absolute inset-0 z-20 pointer-events-none flex justify-center pt-32">
+          <div className="w-full max-w-[1500px] px-6 sm:px-12 flex justify-between pointer-events-auto">
+            {/* Column 1 - Left flank */}
+            <div ref={col1Ref} className="w-[280px] sm:w-[320px] shrink-0 flex flex-col space-y-28 md:space-y-44">
+              {column1Items.map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => setActiveLightbox(item)}
+                  className={`group relative aspect-square w-full rounded-3xl overflow-hidden border border-stroke bg-surface shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer ${item.rotation}`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 inset-x-0 p-5 text-left">
+                    <span className="text-[10px] uppercase tracking-wider text-muted block mb-1">
+                      {item.category}
+                    </span>
+                    <h4 className="text-base sm:text-lg font-display italic text-text-primary">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/30 rounded-3xl transition-colors pointer-events-none" />
+                </div>
+              ))}
+            </div>
+
+            {/* Column 2 - Right flank */}
+            <div ref={col2Ref} className="w-[280px] sm:w-[320px] shrink-0 flex flex-col space-y-28 md:space-y-44 pt-20">
+              {column2Items.map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => setActiveLightbox(item)}
+                  className={`group relative aspect-square w-full rounded-3xl overflow-hidden border border-stroke bg-surface shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer ${item.rotation}`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  <div className="absolute bottom-0 inset-x-0 p-5 text-left">
+                    <span className="text-[10px] uppercase tracking-wider text-muted block mb-1">
+                      {item.category}
+                    </span>
+                    <h4 className="text-base sm:text-lg font-display italic text-text-primary">
+                      {item.title}
+                    </h4>
+                  </div>
+                  <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/30 rounded-3xl transition-colors pointer-events-none" />
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* --- MOBILE & TABLET VIEW (< lg): Responsive Grid Layout --- */}
+      <div className="block lg:hidden py-16 px-4 sm:px-6">
+        <div className="max-w-xl mx-auto text-center mb-10">
+          <div className="flex items-center justify-center gap-3 mb-3">
             <span className="w-8 h-px bg-stroke" />
             <span className="text-xs text-muted uppercase tracking-[0.3em] font-medium">
               Engineering Lab
@@ -166,14 +272,12 @@ export const Explorations: React.FC = () => {
             <span className="w-8 h-px bg-stroke" />
           </div>
 
-          {/* Heading: "Interactive explorations" */}
-          <h2 className="text-4xl md:text-6xl lg:text-7xl font-normal text-text-primary mb-4 tracking-tight">
+          <h2 className="text-3xl sm:text-5xl font-normal text-text-primary mb-3 tracking-tight">
             Interactive{" "}
             <span className="font-display italic font-normal">explorations</span>
           </h2>
 
-          {/* Subtext + GitHub button */}
-          <p className="text-sm md:text-base text-muted max-w-md mx-auto mb-8 leading-relaxed">
+          <p className="text-xs sm:text-sm text-muted leading-relaxed mb-6">
             Experiments in Full-Stack UX, Next.js server components, Three.js shaders,
             and AI prompt vectors.
           </p>
@@ -182,79 +286,39 @@ export const Explorations: React.FC = () => {
             href="https://github.com/ikramamjad"
             target="_blank"
             rel="noopener noreferrer"
-            className="group relative inline-flex items-center rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105"
+            className="inline-flex items-center rounded-full p-[1.5px] transition-transform duration-300 hover:scale-105"
           >
-            <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-6 py-3 text-xs uppercase tracking-widest text-text-primary group-hover:border-transparent transition-colors">
-              <span>Explore on GitHub</span>
-              <span className="text-xs transition-transform duration-300 group-hover:translate-x-1">
-                ↗
-              </span>
+            <span className="relative z-10 inline-flex items-center gap-2 rounded-full border border-stroke bg-surface/90 px-5 py-2.5 text-xs uppercase tracking-widest text-text-primary">
+              <span>Explore on GitHub ↗</span>
             </span>
           </a>
         </div>
-      </div>
 
-      {/* Layer 2: Parallax Columns (z-20, absolute) */}
-      <div className="absolute inset-0 z-20 pointer-events-none flex justify-center pt-32">
-        <div className="w-full max-w-[1500px] px-6 sm:px-12 flex justify-between pointer-events-auto">
-          {/* Column 1 - Left flank */}
-          <div ref={col1Ref} className="w-[280px] sm:w-[320px] shrink-0 flex flex-col space-y-28 md:space-y-44">
-            {column1Items.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setActiveLightbox(item)}
-                className={`group relative aspect-square w-full rounded-3xl overflow-hidden border border-stroke bg-surface shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer ${item.rotation}`}
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-5 text-left">
-                  <span className="text-[10px] uppercase tracking-wider text-muted block mb-1">
-                    {item.category}
-                  </span>
-                  <h4 className="text-base sm:text-lg font-display italic text-text-primary">
-                    {item.title}
-                  </h4>
-                </div>
-                {/* Hover ring */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/30 rounded-3xl transition-colors pointer-events-none" />
+        {/* Mobile & Tablet Card Grid */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto">
+          {allItems.map((item) => (
+            <div
+              key={`m-${item.id}`}
+              onClick={() => setActiveLightbox(item)}
+              className="group relative aspect-[4/3] w-full rounded-2xl overflow-hidden border border-stroke bg-surface shadow-lg cursor-pointer"
+            >
+              <img
+                src={item.image}
+                alt={item.title}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                loading="lazy"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent" />
+              <div className="absolute bottom-0 inset-x-0 p-4 text-left">
+                <span className="text-[10px] uppercase tracking-wider text-cyan-400 font-mono block mb-1">
+                  {item.category}
+                </span>
+                <h4 className="text-base font-display italic text-text-primary">
+                  {item.title}
+                </h4>
               </div>
-            ))}
-          </div>
-
-          {/* Column 2 - Right flank */}
-          <div ref={col2Ref} className="w-[280px] sm:w-[320px] shrink-0 flex flex-col space-y-28 md:space-y-44 pt-20">
-            {column2Items.map((item) => (
-              <div
-                key={item.id}
-                onClick={() => setActiveLightbox(item)}
-                className={`group relative aspect-square w-full rounded-3xl overflow-hidden border border-stroke bg-surface shadow-2xl transition-all duration-500 hover:scale-105 cursor-pointer ${item.rotation}`}
-              >
-                <img
-                  src={item.image}
-                  alt={item.title}
-                  className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                <div className="absolute bottom-0 inset-x-0 p-5 text-left">
-                  <span className="text-[10px] uppercase tracking-wider text-muted block mb-1">
-                    {item.category}
-                  </span>
-                  <h4 className="text-base sm:text-lg font-display italic text-text-primary">
-                    {item.title}
-                  </h4>
-                </div>
-                {/* Hover ring */}
-                <div className="absolute inset-0 border-2 border-transparent group-hover:border-white/30 rounded-3xl transition-colors pointer-events-none" />
-              </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div>
       </div>
 

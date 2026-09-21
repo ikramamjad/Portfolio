@@ -5,7 +5,7 @@ interface LoadingScreenProps {
   onComplete: () => void;
 }
 
-const words = ["Design", "Create", "Inspire"];
+const words = ["Build", "Break", "Improve"];
 
 export const LoadingScreen: React.FC<LoadingScreenProps> = ({ onComplete }) => {
   const [count, setCount] = useState(0);

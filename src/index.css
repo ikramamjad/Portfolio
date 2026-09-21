@@ -18,11 +18,17 @@
     border-color: hsl(var(--stroke));
   }
 
+  html {
+    overflow-x: hidden;
+    max-width: 100vw;
+  }
+
   body {
     background-color: hsl(var(--bg));
     color: hsl(var(--text));
     font-family: var(--font-body);
     overflow-x: hidden;
+    max-width: 100vw;
     font-feature-settings: "cv02", "cv03", "cv04", "cv11";
   }
 
