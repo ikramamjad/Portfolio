@@ -1,6 +1,8 @@
 import React, { useEffect, useRef } from "react";
 import Hls from "hls.js";
 import gsap from "gsap";
+import { FadeUp } from "./motion/FadeUpStagger";
+import { MagneticButton } from "./motion/MagneticButton";
 
 const HLS_SOURCE =
   "https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8";
@@ -104,8 +106,8 @@ export const ContactFooter: React.FC = () => {
           </div>
         </div>
 
-        {/* CTA Area */}
-        <div className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-6">
+        {/* CTA Area with FadeUp */}
+        <FadeUp className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-6">
           <span className="text-xs uppercase tracking-[0.3em] text-muted font-medium">
             Have a project in mind?
           </span>
@@ -120,25 +122,20 @@ export const ContactFooter: React.FC = () => {
             and high-impact technical initiatives.
           </p>
 
-          {/* Email button: mailto:ikramamjad10@gmail.com with gradient hover border ring */}
+          {/* HOVER EFFECT #4: Magnetic email CTA button */}
           <div className="pt-4">
-            <a
-              href="mailto:ikramamjad10@gmail.com"
-              className="group relative inline-flex items-center rounded-full p-[2px] transition-all duration-300 hover:scale-105"
-            >
-              {/* Gradient border ring on hover */}
-              <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[1px]" />
-              <span className="absolute inset-[-1.5px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-
-              <span className="relative z-10 inline-flex items-center gap-2 sm:gap-3 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-base font-medium text-text-primary group-hover:border-transparent transition-colors">
-                <span className="break-all sm:break-normal">ikramamjad10@gmail.com</span>
-                <span className="text-sm sm:text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0">
-                  ↗
+            <MagneticButton href="mailto:ikramamjad10@gmail.com" maxOffset={10}>
+              <div className="group relative inline-flex items-center rounded-full p-[2px] transition-all duration-300">
+                <span className="relative z-10 inline-flex items-center gap-2 sm:gap-3 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-base font-medium text-text-primary group-hover:border-transparent transition-colors">
+                  <span className="break-all sm:break-normal">ikramamjad10@gmail.com</span>
+                  <span className="text-sm sm:text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0">
+                    ↗
+                  </span>
                 </span>
-              </span>
-            </a>
+              </div>
+            </MagneticButton>
           </div>
-        </div>
+        </FadeUp>
 
         {/* Footer Bar */}
         <div className="mt-16 md:mt-28 pt-8 border-t border-stroke/50 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
@@ -153,24 +150,49 @@ export const ContactFooter: React.FC = () => {
             </span>
           </div>
 
-          {/* Social links */}
-          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
+          {/* Social links & Internal quick links */}
+          <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-xs">
+            <a
+              href="#hero"
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+            >
+              <span className="animated-underline">Top</span>
+            </a>
+            <a
+              href="#stack"
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+            >
+              <span className="animated-underline">Arsenal</span>
+            </a>
+            <a
+              href="#work"
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+            >
+              <span className="animated-underline">Projects</span>
+            </a>
+            <a
+              href="#journal"
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+            >
+              <span className="animated-underline">Field Notes</span>
+            </a>
             {socialLinks.map((link) => (
               <a
                 key={link.name}
                 href={link.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-xs text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+                className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
               >
-                {link.name}
+                <span className="animated-underline">{link.name}</span>
               </a>
             ))}
           </div>
 
-          {/* Copyright */}
-          <div className="text-xs text-muted/60">
-            © {new Date().getFullYear()} IKRAM AMJAD. All rights reserved.
+          {/* Copyright & Author Credentials */}
+          <div className="text-xs text-muted/60 font-mono">
+            <div>© {new Date().getFullYear()} IKRAM AMJAD. All rights reserved.</div>
+            <div className="text-[11px] text-zinc-500 mt-1">Author: Engr. Ikram Amjad (BS Computer Engineering)</div>
           </div>
         </div>
       </div>

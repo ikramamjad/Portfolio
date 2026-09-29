@@ -12,6 +12,8 @@ import { ResumePreviewModal } from "./components/ResumePreviewModal";
 import AITwinModal from "./components/AITwinModal";
 import AnimeAvatar from "./components/AnimeAvatar";
 import { Bot, Sparkles } from "lucide-react";
+import { ScrollProgressBar } from "./components/motion/ScrollProgressBar";
+import { SmoothScroll } from "./components/motion/SmoothScroll";
 
 export const Index: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -21,6 +23,12 @@ export const Index: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-bg text-text-primary selection:bg-white/20 selection:text-white relative">
+      {/* Scroll Effect #4: Top Scroll Progress Bar */}
+      <ScrollProgressBar />
+
+      {/* Scroll Effect #5: Smooth Scrolling with Lenis */}
+      <SmoothScroll />
+
       {/* Loading Screen: requestAnimationFrame counter 000 -> 100 over 2700ms */}
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
 
@@ -34,7 +42,7 @@ export const Index: React.FC = () => {
         }}
       />
 
-      <main>
+      <main className="overflow-x-clip">
         {/* Section 2: Hero */}
         <Hero
           onSeeWorksClick={() => {

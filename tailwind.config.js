@@ -12,7 +12,9 @@ export default {
       fontFamily: {
         body: ["var(--font-body)", "Inter", "sans-serif"],
         display: ["var(--font-display)", '"Instrument Serif"', "serif"],
+        condensed: ['"Inter Tight"', "Inter", "sans-serif"],
         sans: ["var(--font-body)", "Inter", "sans-serif"],
+        mono: ['"JetBrains Mono"', "monospace"],
       },
       colors: {
         bg: "hsl(var(--bg))",
@@ -21,6 +23,11 @@ export default {
         muted: "hsl(var(--muted))",
         stroke: "hsl(var(--stroke))",
         accent: "hsl(var(--accent))",
+        pink: {
+          soft: "#FDA4AF",
+          glow: "rgba(253, 164, 175, 0.15)",
+          emphasis: "#F472B6",
+        },
         brand: {
           gold: "#B4A06E",
           surface: "#0B0F19",
@@ -29,6 +36,7 @@ export default {
           emerald: "#10B981",
           violet: "#8B5CF6",
           indigo: "#6366F1",
+          crimson: "#E11D48",
         }
       },
       keyframes: {
@@ -53,6 +61,9 @@ export default {
       },
       boxShadow: {
         'glow-accent': '0 0 20px -3px rgba(137, 170, 204, 0.4)',
+      },
+      transitionTimingFunction: {
+        spring: 'cubic-bezier(0.22, 1, 0.36, 1)',
       }
     }
   },

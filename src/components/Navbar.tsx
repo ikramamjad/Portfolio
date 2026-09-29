@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Bot, Sparkles, FileText } from "lucide-react";
+import { MagneticButton } from "./motion/MagneticButton";
 
 interface NavbarProps {
   activeSection?: string;
@@ -77,7 +78,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Divider */}
           <div className="w-px h-5 bg-stroke mx-2" />
 
-          {/* Nav links */}
+          {/* Nav links with HOVER EFFECT #3: Animated Underline */}
           <div className="flex items-center space-x-1 sm:space-x-1.5">
             <button
               onClick={() => scrollTo("hero")}
@@ -87,7 +88,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : "text-muted hover:text-text-primary hover:bg-stroke/30"
               }`}
             >
-              Home
+              <span className="animated-underline">Home</span>
             </button>
 
             <button
@@ -98,7 +99,7 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : "text-muted hover:text-text-primary hover:bg-stroke/30"
               }`}
             >
-              Stack
+              <span className="animated-underline">Stack</span>
             </button>
 
             <button
@@ -109,7 +110,18 @@ export const Navbar: React.FC<NavbarProps> = ({
                   : "text-muted hover:text-text-primary hover:bg-stroke/30"
               }`}
             >
-              Work
+              <span className="animated-underline">Work</span>
+            </button>
+
+            <button
+              onClick={() => scrollTo("journal")}
+              className={`text-xs sm:text-sm rounded-full px-3.5 py-1.5 transition-all duration-200 font-medium ${
+                active === "journal"
+                  ? "text-text-primary bg-stroke/60 font-semibold"
+                  : "text-muted hover:text-text-primary hover:bg-stroke/30"
+              }`}
+            >
+              <span className="animated-underline">Insights</span>
             </button>
 
             <button
@@ -121,7 +133,7 @@ export const Navbar: React.FC<NavbarProps> = ({
               }}
               className="text-xs sm:text-sm rounded-full px-3.5 py-1.5 transition-all duration-200 font-medium text-muted hover:text-text-primary hover:bg-stroke/30"
             >
-              Resume
+              <span className="animated-underline">Resume</span>
             </button>
 
             {/* AI Twin Trigger */}
@@ -130,30 +142,28 @@ export const Navbar: React.FC<NavbarProps> = ({
               className="inline-flex items-center gap-1.5 text-xs sm:text-sm rounded-full px-3.5 py-1.5 transition-all duration-200 font-medium text-muted hover:text-text-primary hover:bg-stroke/30 group/ai"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-              <span>AI Twin</span>
+              <span className="animated-underline">AI Twin</span>
             </button>
           </div>
 
           {/* Divider */}
           <div className="w-px h-5 bg-stroke mx-2" />
 
-          {/* "Say hi" button */}
-          <button
+          {/* HOVER EFFECT #4: Magnetic "Say hi" CTA button */}
+          <MagneticButton
             onClick={() => {
               if (onContactClick) onContactClick();
               else scrollTo("contact");
             }}
-            className="group relative inline-flex items-center text-xs sm:text-sm rounded-full p-[2px] transition-all duration-300 hover:scale-105 focus:outline-none"
+            maxOffset={8}
           >
-            <span className="absolute inset-0 rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-[1px]" />
-            <span className="absolute inset-[-1.5px] rounded-full accent-gradient opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-            <span className="relative z-10 inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-surface backdrop-blur-md text-text-primary font-medium border border-stroke/40 group-hover:border-transparent transition-colors">
-              Say hi
+            <div className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-surface backdrop-blur-md text-text-primary text-xs sm:text-sm font-medium border border-stroke/40 group-hover:border-transparent transition-colors">
+              <span>Say hi</span>
               <span className="text-xs transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5">
                 ↗
               </span>
-            </span>
-          </button>
+            </div>
+          </MagneticButton>
         </nav>
 
         {/* Mobile Compact Navbar */}
@@ -237,6 +247,16 @@ export const Navbar: React.FC<NavbarProps> = ({
               >
                 <span>Featured Projects</span>
                 <span className="text-[10px] uppercase font-mono tracking-widest text-muted/60">03</span>
+              </button>
+
+              <button
+                onClick={() => scrollTo("journal")}
+                className={`w-full text-left px-3.5 py-2 rounded-xl text-xs font-medium flex items-center justify-between ${
+                  active === "journal" ? "bg-white/10 text-white font-semibold" : "text-muted hover:text-white hover:bg-white/5"
+                }`}
+              >
+                <span>Field Notes</span>
+                <span className="text-[10px] uppercase font-mono tracking-widest text-muted/60">04</span>
               </button>
 
               <button
