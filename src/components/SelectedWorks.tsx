@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Github, ExternalLink, Sparkles, Layers } from "lucide-react";
 import { FadeUpStagger, FadeUpItem } from "./motion/FadeUpStagger";
 import { EditorialHeadline, EditorialSupporting, ParallaxLayer } from "./motion/EditorialReveal";
+import { ParallaxImage } from "./motion/ParallaxImage";
 
 interface Project {
   id: string;
@@ -164,15 +165,17 @@ export const SelectedWorks: React.FC = () => {
                 onClick={() => setSelectedProject(project)}
                 className="group relative rounded-3xl overflow-hidden border border-white/10 hover:border-pink-soft/40 bg-zinc-950/80 min-h-[420px] sm:min-h-[460px] cursor-pointer flex flex-col justify-end hover-lift-card transition-all duration-500 shadow-2xl"
               >
-                {/* Fixed overflow-hidden container with restrained image zoom */}
+                {/* Parallax Image scaled to 1.3 moving against scroll direction */}
                 <div className="absolute inset-0 overflow-hidden">
-                  <img
+                  <ParallaxImage
                     src={project.image}
                     alt={project.title}
                     width={800}
                     height={500}
-                    className="w-full h-full object-cover transition-transform duration-700 ease-spring group-hover:scale-[1.07] opacity-75 group-hover:opacity-90 will-change-transform"
-                    loading="lazy"
+                    scale={1.3}
+                    speed={12}
+                    className="w-full h-full"
+                    imgClassName="w-full h-full object-cover transition-opacity duration-500 opacity-75 group-hover:opacity-90"
                   />
                 </div>
 

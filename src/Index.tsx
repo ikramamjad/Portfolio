@@ -13,21 +13,19 @@ import AITwinModal from "./components/AITwinModal";
 import AnimeAvatar from "./components/AnimeAvatar";
 import { Bot, Sparkles } from "lucide-react";
 import { ScrollProgressBar } from "./components/motion/ScrollProgressBar";
-import { SmoothScroll } from "./components/motion/SmoothScroll";
+import { LenisProvider, useLenis } from "./components/motion/LenisProvider";
 
-export const Index: React.FC = () => {
+const PortfolioContent: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isResumeOpen, setIsResumeOpen] = useState(false);
   const [isAITwinOpen, setIsAITwinOpen] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
+  const { scrollTo } = useLenis();
 
   return (
     <div className="min-h-screen bg-bg text-text-primary selection:bg-white/20 selection:text-white relative">
-      {/* Scroll Effect #4: Top Scroll Progress Bar */}
+      {/* EFFECT #2: Top Scroll Progress Bar */}
       <ScrollProgressBar />
-
-      {/* Scroll Effect #5: Smooth Scrolling with Lenis */}
-      <SmoothScroll />
 
       {/* Loading Screen: requestAnimationFrame counter 000 -> 100 over 2700ms */}
       {isLoading && <LoadingScreen onComplete={() => setIsLoading(false)} />}
@@ -37,8 +35,7 @@ export const Index: React.FC = () => {
         onResumeClick={() => setIsResumeOpen(true)}
         onAITwinClick={() => setIsAITwinOpen(true)}
         onContactClick={() => {
-          const el = document.getElementById("contact");
-          if (el) el.scrollIntoView({ behavior: "smooth" });
+          scrollTo("#contact", { duration: 1.6 });
         }}
       />
 
@@ -46,12 +43,10 @@ export const Index: React.FC = () => {
         {/* Section 2: Hero */}
         <Hero
           onSeeWorksClick={() => {
-            const el = document.getElementById("work");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
+            scrollTo("#work", { duration: 1.6 });
           }}
           onReachOutClick={() => {
-            const el = document.getElementById("contact");
-            if (el) el.scrollIntoView({ behavior: "smooth" });
+            scrollTo("#contact", { duration: 1.6 });
           }}
         />
 
@@ -127,6 +122,14 @@ export const Index: React.FC = () => {
         onSpeakingChange={setIsSpeaking}
       />
     </div>
+  );
+};
+
+export const Index: React.FC = () => {
+  return (
+    <LenisProvider lerp={0.085} duration={1.6}>
+      <PortfolioContent />
+    </LenisProvider>
   );
 };
 

@@ -2,20 +2,28 @@ import React from "react";
 import { motion, useScroll, useSpring } from "framer-motion";
 import { prefersReducedMotion } from "./motionTokens";
 
+interface ScrollProgressBarProps {
+  className?: string;
+  height?: number | string;
+  gradient?: string;
+}
+
 /**
- * SCROLL EFFECT #4: Scroll Progress Bar
- * A thin 3px bar fixed at the very top of the page that fills with scroll progress.
- * Uses hardware-accelerated transform: scaleX (animating transform only).
- * Utilizes the portfolio's accent gradient / accent color.
- * To remove: simply delete or comment out <ScrollProgressBar /> in Index.tsx.
+ * EFFECT #2: Scroll Progress Bar
+ * A fixed 3px orange gradient bar at the top of the page.
+ * Its scaleX follows a spring-smoothed scrollYProgress.
  */
-export const ScrollProgressBar: React.FC = () => {
+export const ScrollProgressBar: React.FC<ScrollProgressBarProps> = ({
+  className = "",
+  height = "3px",
+  gradient = "linear-gradient(90deg, #ea580c 0%, #f97316 50%, #fb923c 100%)",
+}) => {
   const { scrollYProgress } = useScroll();
   const isReduced = prefersReducedMotion();
 
-  // Smooth spring for the scroll progress to give organic responsiveness
+  // Spring-smoothed progress for a responsive, organic momentum
   const scaleX = useSpring(scrollYProgress, {
-    stiffness: 100,
+    stiffness: 120,
     damping: 30,
     restDelta: 0.001,
   });
@@ -27,13 +35,16 @@ export const ScrollProgressBar: React.FC = () => {
   return (
     <div
       aria-hidden="true"
-      className="fixed top-0 left-0 right-0 h-[3px] z-[9999] pointer-events-none overflow-hidden bg-transparent"
+      className={`fixed top-0 left-0 right-0 z-[9999] pointer-events-none overflow-hidden ${className}`}
+      style={{ height }}
     >
       <motion.div
-        className="w-full h-full origin-left bg-gradient-to-r from-[#89AACC] to-[#4E85BF] shadow-[0_0_8px_rgba(137,170,204,0.6)]"
+        className="w-full h-full origin-left will-change-transform shadow-[0_0_12px_rgba(249,115,22,0.6)]"
         style={{
           scaleX,
+          background: gradient,
           transformOrigin: "0%",
+          willChange: "transform",
         }}
       />
     </div>

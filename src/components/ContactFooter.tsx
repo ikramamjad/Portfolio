@@ -3,6 +3,8 @@ import Hls from "hls.js";
 import gsap from "gsap";
 import { FadeUp } from "./motion/FadeUpStagger";
 import { MagneticButton } from "./motion/MagneticButton";
+import { ScaleReveal3D } from "./motion/ScaleReveal3D";
+import { useLenis } from "./motion/LenisProvider";
 
 const HLS_SOURCE =
   "https://stream.mux.com/Aa02T7oM1wH5Mk5EEVDYhbZ1ChcdhRsS2m1NYyx4Ua1g.m3u8";
@@ -23,6 +25,7 @@ export const ContactFooter: React.FC = () => {
   const videoRef = useRef<HTMLVideoElement>(null);
   const marqueeRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollTo } = useLenis();
 
   // Initialize flipped HLS background video
   useEffect(() => {
@@ -106,36 +109,38 @@ export const ContactFooter: React.FC = () => {
           </div>
         </div>
 
-        {/* CTA Area with FadeUp */}
-        <FadeUp className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-6">
-          <span className="text-xs uppercase tracking-[0.3em] text-muted font-medium">
-            Have a project in mind?
-          </span>
+        {/* EFFECT #11: 3D Scale Reveal on CTA Block */}
+        <ScaleReveal3D className="w-full flex justify-center">
+          <FadeUp className="flex flex-col items-center text-center max-w-2xl mx-auto space-y-6">
+            <span className="text-xs uppercase tracking-[0.3em] text-muted font-medium">
+              Have a project in mind?
+            </span>
 
-          <h2 className="text-3xl sm:text-5xl md:text-6xl font-normal text-text-primary tracking-tight leading-tight">
-            Let&apos;s create something{" "}
-            <span className="font-display italic">extraordinary</span> together.
-          </h2>
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-normal text-text-primary tracking-tight leading-tight">
+              Let&apos;s create something{" "}
+              <span className="font-display italic">extraordinary</span> together.
+            </h2>
 
-          <p className="text-sm md:text-base text-muted max-w-lg leading-relaxed">
-            Available for full-stack engineering roles, scalable backend architectures,
-            and high-impact technical initiatives.
-          </p>
+            <p className="text-sm md:text-base text-muted max-w-lg leading-relaxed">
+              Available for full-stack engineering roles, scalable backend architectures,
+              and high-impact technical initiatives.
+            </p>
 
-          {/* HOVER EFFECT #4: Magnetic email CTA button */}
-          <div className="pt-4">
-            <MagneticButton href="mailto:ikramamjad10@gmail.com" maxOffset={10}>
-              <div className="group relative inline-flex items-center rounded-full p-[2px] transition-all duration-300">
-                <span className="relative z-10 inline-flex items-center gap-2 sm:gap-3 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-base font-medium text-text-primary group-hover:border-transparent transition-colors">
-                  <span className="break-all sm:break-normal">ikramamjad10@gmail.com</span>
-                  <span className="text-sm sm:text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0">
-                    ↗
+            {/* HOVER EFFECT #4: Magnetic email CTA button */}
+            <div className="pt-4">
+              <MagneticButton href="mailto:ikramamjad10@gmail.com" maxOffset={10}>
+                <div className="group relative inline-flex items-center rounded-full p-[2px] transition-all duration-300">
+                  <span className="relative z-10 inline-flex items-center gap-2 sm:gap-3 rounded-full border border-stroke bg-surface/90 backdrop-blur-md px-5 sm:px-8 py-3 sm:py-4 text-xs sm:text-base font-medium text-text-primary group-hover:border-transparent transition-colors">
+                    <span className="break-all sm:break-normal">ikramamjad10@gmail.com</span>
+                    <span className="text-sm sm:text-base transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1 shrink-0">
+                      ↗
+                    </span>
                   </span>
-                </span>
-              </div>
-            </MagneticButton>
-          </div>
-        </FadeUp>
+                </div>
+              </MagneticButton>
+            </div>
+          </FadeUp>
+        </ScaleReveal3D>
 
         {/* Footer Bar */}
         <div className="mt-16 md:mt-28 pt-8 border-t border-stroke/50 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
@@ -150,29 +155,45 @@ export const ContactFooter: React.FC = () => {
             </span>
           </div>
 
-          {/* Social links & Internal quick links */}
+          {/* Social links & Internal quick links with Lenis scrollTo */}
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6 font-mono text-xs">
             <a
               href="#hero"
-              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#hero", { duration: 1.6 });
+              }}
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors cursor-pointer"
             >
               <span className="animated-underline">Top</span>
             </a>
             <a
               href="#stack"
-              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#stack", { duration: 1.6 });
+              }}
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors cursor-pointer"
             >
               <span className="animated-underline">Arsenal</span>
             </a>
             <a
               href="#work"
-              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#work", { duration: 1.6 });
+              }}
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors cursor-pointer"
             >
               <span className="animated-underline">Projects</span>
             </a>
             <a
               href="#journal"
-              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors"
+              onClick={(e) => {
+                e.preventDefault();
+                scrollTo("#journal", { duration: 1.6 });
+              }}
+              className="text-muted hover:text-text-primary uppercase tracking-widest transition-colors cursor-pointer"
             >
               <span className="animated-underline">Field Notes</span>
             </a>

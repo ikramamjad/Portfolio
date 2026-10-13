@@ -1,8 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import Hls from "hls.js";
-import { HeroTextReveal, MaskRevealItem } from "./motion/HeroTextReveal";
+import { MaskRevealItem } from "./motion/HeroTextReveal";
 import { MagneticButton } from "./motion/MagneticButton";
 import { TechTooltip } from "./motion/TechTooltip";
+import { useLenis } from "./motion/LenisProvider";
+import { HeroParallaxExit } from "./motion/HeroParallaxExit";
+import { MaskedHeadingReveal } from "./motion/MaskedHeadingReveal";
+import { ScrollScrubbedParagraph } from "./motion/ScrollScrubbedParagraph";
 
 interface HeroProps {
   onSeeWorksClick?: () => void;
@@ -39,6 +43,7 @@ export const Hero: React.FC<HeroProps> = ({
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const [roleIndex, setRoleIndex] = useState(0);
+  const { scrollTo } = useLenis();
 
   // Initialize HLS video
   useEffect(() => {
@@ -86,8 +91,7 @@ export const Hero: React.FC<HeroProps> = ({
     if (onSeeWorksClick) {
       onSeeWorksClick();
     } else {
-      const el = document.getElementById("work");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      scrollTo("#work", { duration: 1.6 });
     }
   };
 
@@ -95,8 +99,7 @@ export const Hero: React.FC<HeroProps> = ({
     if (onReachOutClick) {
       onReachOutClick();
     } else {
-      const el = document.getElementById("contact");
-      if (el) el.scrollIntoView({ behavior: "smooth" });
+      scrollTo("#contact", { duration: 1.6 });
     }
   };
 
@@ -122,48 +125,53 @@ export const Hero: React.FC<HeroProps> = ({
         <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-bg to-transparent" />
       </div>
 
-      {/* Hero Content (centered, z-10) */}
-      <div className="relative z-10 max-w-4xl mx-auto px-6 pt-24 pb-16 flex flex-col items-center text-center">
-        {/* SCROLL / LOAD EFFECT #2: Eyebrow Mask Reveal */}
-        <MaskRevealItem delay={0.1} duration={0.7} className="mb-4 sm:mb-6">
-          <div className="text-[10px] sm:text-xs text-muted uppercase tracking-[0.2em] sm:tracking-[0.25em] flex items-center justify-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
-            <span className="text-center">PORTFOLIO // COMPUTER ENGINEER &amp; FULL-STACK ENGINEER</span>
+      {/* Hero Parallax Exit wrapper with giant background word */}
+      <HeroParallaxExit
+        backgroundWord="ENGINEER"
+        backgroundWordClassName="text-white/[0.04]"
+        className="w-full flex items-center justify-center"
+      >
+        {/* Hero Content (centered, z-10) */}
+        <div className="relative z-10 max-w-4xl mx-auto px-6 pt-24 pb-16 flex flex-col items-center text-center">
+          {/* SCROLL / LOAD EFFECT #2: Eyebrow Mask Reveal */}
+          <MaskRevealItem delay={0.1} duration={0.7} className="mb-4 sm:mb-6">
+            <div className="text-[10px] sm:text-xs text-muted uppercase tracking-[0.2em] sm:tracking-[0.25em] flex items-center justify-center gap-2">
+              <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse shrink-0" />
+              <span className="text-center">PORTFOLIO // COMPUTER ENGINEER &amp; FULL-STACK ENGINEER</span>
+            </div>
+          </MaskRevealItem>
+
+          {/* EFFECT #5: Masked Word-by-Word Heading Reveal */}
+          <MaskedHeadingReveal
+            text="IKRAM AMJAD"
+            as="h1"
+            delay={0.2}
+            stagger={0.05}
+            duration={0.7}
+            className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-display italic leading-[0.95] sm:leading-[0.9] tracking-tight text-text-primary mb-4 sm:mb-6 select-none break-words"
+          />
+
+          {/* Role Title Mask Reveal */}
+          <MaskRevealItem delay={0.35} duration={0.8} className="mb-4">
+            <p className="text-sm sm:text-base md:text-xl text-text-primary/90 font-light">
+              A{" "}
+              <span
+                key={roleIndex}
+                className="font-display italic text-text-primary animate-role-fade-in inline-block text-lg sm:text-xl md:text-2xl px-1"
+              >
+                {roles[roleIndex]}
+              </span>{" "}
+              based in Islamabad.
+            </p>
+          </MaskRevealItem>
+
+          {/* EFFECT #6: Scroll-Scrubbed Paragraph */}
+          <div className="mb-6 sm:mb-8 px-2">
+            <ScrollScrubbedParagraph
+              text="Specializing in scalable full-stack web applications, high-throughput microservices, optimized database architectures, and intelligent prompt engineering."
+              className="text-xs sm:text-sm md:text-base text-muted max-w-xl leading-relaxed mx-auto text-center"
+            />
           </div>
-        </MaskRevealItem>
-
-        {/* SCROLL / LOAD EFFECT #2: Name Reveal (word by word mask reveal on page load) */}
-        <HeroTextReveal
-          text="IKRAM AMJAD"
-          as="h1"
-          mode="words"
-          delay={0.2}
-          stagger={0.12}
-          duration={0.8}
-          className="text-4xl sm:text-7xl md:text-8xl lg:text-9xl font-display italic leading-[0.95] sm:leading-[0.9] tracking-tight text-text-primary mb-4 sm:mb-6 select-none break-words"
-        />
-
-        {/* SCROLL / LOAD EFFECT #2: Role Title Mask Reveal */}
-        <MaskRevealItem delay={0.4} duration={0.8} className="mb-4">
-          <p className="text-sm sm:text-base md:text-xl text-text-primary/90 font-light">
-            A{" "}
-            <span
-              key={roleIndex}
-              className="font-display italic text-text-primary animate-role-fade-in inline-block text-lg sm:text-xl md:text-2xl px-1"
-            >
-              {roles[roleIndex]}
-            </span>{" "}
-            based in Islamabad.
-          </p>
-        </MaskRevealItem>
-
-        {/* SCROLL / LOAD EFFECT #2: Description Mask Reveal */}
-        <MaskRevealItem delay={0.55} duration={0.8} className="mb-6 sm:mb-8">
-          <p className="text-xs sm:text-sm md:text-base text-muted max-w-xl leading-relaxed px-2">
-            Specializing in scalable full-stack web applications, high-throughput microservices,
-            optimized database architectures, and intelligent prompt engineering.
-          </p>
-        </MaskRevealItem>
 
         {/* HOVER EFFECT #4: Main CTA Buttons with Magnetic Pull + Fill-Slide */}
         <MaskRevealItem delay={0.7} duration={0.8} className="w-full sm:w-auto">
@@ -208,6 +216,7 @@ export const Hero: React.FC<HeroProps> = ({
           </div>
         </MaskRevealItem>
       </div>
+    </HeroParallaxExit>
 
       {/* Scroll Indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2.5 pointer-events-none select-none z-10">

@@ -1,6 +1,10 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "framer-motion";
 import { Menu, X, Bot, Sparkles, FileText } from "lucide-react";
 import { MagneticButton } from "./motion/MagneticButton";
+import { useLenis } from "./motion/LenisProvider";
+import { useAutoHidingNav } from "./motion/AutoHidingNavbar";
+import { MOTION_EASE } from "./motion/motionTokens";
 
 interface NavbarProps {
   activeSection?: string;
@@ -18,6 +22,8 @@ export const Navbar: React.FC<NavbarProps> = ({
   const [hasScrolled, setHasScrolled] = useState(false);
   const [active, setActive] = useState(activeSection);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { scrollTo: lenisScrollTo } = useLenis();
+  const { isHidden } = useAutoHidingNav(200);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -46,14 +52,17 @@ export const Navbar: React.FC<NavbarProps> = ({
   const scrollTo = (id: string) => {
     setActive(id === "hero" ? "home" : id);
     setMobileMenuOpen(false);
-    const target = document.getElementById(id);
-    if (target) {
-      target.scrollIntoView({ behavior: "smooth" });
-    }
+    lenisScrollTo(`#${id}`, { duration: 1.6 });
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 sm:pt-5 px-3 sm:px-4 pointer-events-none">
+    <motion.header
+      initial={{ y: 0 }}
+      animate={{ y: isHidden ? "-100%" : "0%" }}
+      transition={{ duration: 0.35, ease: MOTION_EASE }}
+      style={{ willChange: "transform" }}
+      className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-3 sm:pt-5 px-3 sm:px-4 pointer-events-none"
+    >
       <div className="flex flex-col items-center pointer-events-auto max-w-full">
         {/* Desktop Navbar */}
         <nav
@@ -291,7 +300,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           )}
         </div>
       </div>
-    </header>
+    </motion.header>
   );
 };
 export default Navbar;
